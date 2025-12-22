@@ -142,7 +142,7 @@ export default function PricingCard({
 
         {/* Button */}
         <button 
-          className={`w-full px-6 ${isHome ? 'py-2' : 'py-3'} rounded-lg font-${isHome ? 'semibold' : 'medium'} text-[16px] hover:opacity-90 transition-opacity mt-auto`}
+          className={`w-full px-6 py-3 rounded-lg font-${isHome ? 'semibold' : 'medium'} text-[16px] hover:opacity-90 transition-opacity mt-auto`}
           style={{ 
             backgroundColor: isFree ? 'white' : '#1E3A8A',
             color: isFree ? '#1E3A8A' : 'white',

@@ -31,13 +31,13 @@ export default function PricingPlans() {
               />
             </div>
             <h1 
-              className="text-5xl font-bold mb-5 text-[#111827]"
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 text-[#111827]"
               style={{ fontFamily: 'Poppins, sans-serif' }}
             >
               Choose Your Scoova Plan
             </h1>
             <p 
-              className="text-xl text-[#4B5563] font-normal"
+              className="text-base sm:text-lg lg:text-xl text-[#4B5563] font-normal"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
               Unlock verified school insights, management tools, and premium analytics.
@@ -50,7 +50,7 @@ export default function PricingPlans() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Pricing Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-7xl mx-auto mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 max-w-7xl mx-auto">
             {/* Free User Card */}
             <PricingCard 
               type="free"

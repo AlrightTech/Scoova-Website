@@ -233,6 +233,16 @@ export default function StudentInsights() {
               </div>
             </div>
           </div>
+          
+          {/* Action Buttons */}
+          <div className="flex gap-3 mt-8 justify-center">
+            <button className="px-6 py-2 rounded-lg border border-[#1E3A8A] bg-white text-[#1E3A8A] font-medium text-sm hover:opacity-90 transition-opacity">
+              View Detail
+            </button>
+            <button className="px-6 py-2 rounded-lg bg-[#1E3A8A] text-white font-medium text-sm hover:opacity-90 transition-opacity">
+              Apply Now
+            </button>
+          </div>
             </div>
           </>
         )}
@@ -479,6 +489,16 @@ export default function StudentInsights() {
                   </p>
                 </div>
               </div>
+            </div>
+            
+            {/* Action Buttons */}
+            <div className="flex gap-3 mt-8 justify-center">
+              <button className="px-6 py-2 rounded-lg border border-[#1E3A8A] bg-white text-[#1E3A8A] font-medium text-sm hover:opacity-90 transition-opacity">
+                View Detail
+              </button>
+              <button className="px-6 py-2 rounded-lg bg-[#1E3A8A] text-white font-medium text-sm hover:opacity-90 transition-opacity">
+                Apply Now
+              </button>
             </div>
             </div>
           </div>
