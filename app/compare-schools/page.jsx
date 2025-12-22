@@ -5,6 +5,7 @@ import CompareSchoolsInput from '@/components/CompareSchoolsInput'
 import SchoolsSearchBar from '@/components/SchoolsSearchBar'
 import SchoolsGrid from '@/components/SchoolsGrid'
 import SchoolInsights from '@/components/SchoolInsights'
+import JobOpportunitySideBySide from '@/components/JobOpportunitySideBySide'
 import ReviewsSection from '@/components/ReviewsSection'
 import CampusGallery from '@/components/CampusGallery'
 import TopSchools from '@/components/TopSchools'
@@ -56,6 +57,7 @@ export default function CompareSchoolsPage() {
         <CompareSchoolsInput />
       </div>
       <SchoolInsights />
+      <JobOpportunitySideBySide />
       <ReviewsSection />
       <CampusGallery />
       <TopSchools />
