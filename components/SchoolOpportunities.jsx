@@ -41,8 +41,13 @@ export default function SchoolOpportunities() {
   ]
 
   return (
-    <section className="py-12 md:py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section 
+      className="py-12 md:py-16 w-full -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8"
+      style={{
+        background: 'linear-gradient(90deg, rgba(239, 246, 255, 0.5) 0%, rgba(219, 234, 254, 0.3) 100%)'
+      }}
+    >
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-2 text-gray-800">
@@ -104,14 +109,14 @@ export default function SchoolOpportunities() {
               </p>
 
               {/* Action Buttons */}
-              <div className="flex gap-3">
+              <div className="flex gap-2">
                 <Link 
                   href={`/job/${job.id}`}
-                  className="flex-1 px-4 py-2 rounded-lg border border-blue-600 text-blue-600 font-medium text-sm hover:bg-blue-50 transition-colors text-center"
+                  className="flex-1 px-3 py-1.5 rounded-lg border border-[#1E3A8A] bg-white text-[#1E3A8A] font-medium text-xs hover:opacity-90 transition-opacity text-center"
                 >
                   View Detail
                 </Link>
-                <button className="flex-1 px-4 py-2 rounded-lg bg-blue-600 text-white font-medium text-sm hover:bg-blue-700 transition-colors">
+                <button className="flex-1 px-3 py-1.5 rounded-lg bg-[#1E3A8A] text-white font-medium text-xs hover:opacity-90 transition-opacity">
                   Apply Now
                 </button>
               </div>

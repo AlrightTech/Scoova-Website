@@ -25,8 +25,8 @@ export default function SchoolOverview() {
                     <Image
                       src="/images/loc-icon (1).png"
                       alt="Location"
-                      width={20}
-                      height={20}
+                      width={12}
+                      height={12}
                       className="object-contain"
                     />
                   </div>
@@ -42,8 +42,8 @@ export default function SchoolOverview() {
                     <Image
                       src="/images/founded-icon.svg"
                       alt="Established"
-                      width={20}
-                      height={20}
+                      width={13}
+                      height={13}
                       className="object-contain"
                     />
                   </div>
@@ -62,8 +62,8 @@ export default function SchoolOverview() {
                     <Image
                       src="/images/carriculam-icon.svg"
                       alt="Curriculum"
-                      width={20}
-                      height={20}
+                      width={16}
+                      height={16}
                       className="object-contain"
                     />
                   </div>

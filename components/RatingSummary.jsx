@@ -24,23 +24,16 @@ export default function RatingSummary() {
       }}
     >
       {/* Overall Rating */}
-      <div className="text-center mb-4">
-        <div className="text-[#1E3A8A] font-['Inter',sans-serif] font-bold text-5xl mb-3">
+      <div className="text-center mb-2">
+        <div className="text-[#1E3A8A] font-['Inter',sans-serif] font-bold text-5xl mb-1">
           {overallRating}
         </div>
         
-        {/* Yellow Stars */}
-        <div className="flex items-center justify-center gap-1 mb-3">
-          {[...Array(5)].map((_, i) => (
-            <Image
-              key={i}
-              src="/images/yellow-star-icon.svg"
-              alt="Star"
-              width={20}
-              height={20}
-              className="w-5 h-5"
-            />
-          ))}
+        {/* 1-10 Rating Scale */}
+        <div className="mb-0">
+          <span className="font-['Inter',sans-serif] font-semibold text-[14px] text-[#4B5563]">
+            1-10
+          </span>
         </div>
         
         {/* Review Count */}
@@ -55,9 +48,9 @@ export default function RatingSummary() {
           const percentage = (rating.count / maxCount) * 100
           return (
             <div key={index} className="flex items-center gap-3">
-              {/* Star Rating Label */}
+              {/* Rating Label */}
               <span className="text-[#4B5563] font-['Inter',sans-serif] font-normal text-sm w-8 flex-shrink-0">
-                {rating.stars}★
+                1-10
               </span>
               
               {/* Progress Bar */}

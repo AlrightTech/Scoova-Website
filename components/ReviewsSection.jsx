@@ -1,104 +1,268 @@
 'use client'
 
+import { useState } from 'react'
+import Image from 'next/image'
+
 export default function ReviewsSection() {
+  const [expandedReviews, setExpandedReviews] = useState({})
+  const [expandedReplies, setExpandedReplies] = useState({})
+  const [openReplies, setOpenReplies] = useState({})
+
   const reviews = [
     {
       id: 1,
-      rating: '5.00',
-      headline: 'Exceptional for Mind and building community',
-      text: 'My daughter has been enrolled for 2 years and has made great progress. The teachers are dedicated, the curriculum is challenging, and the school provides a nurturing environment. Highly recommended.',
-      reviewer: 'John Doe',
-      date: '2 years ago',
-      school: 'International Academy of Excellence'
+      category: 'Academic Excellence',
+      rating: '1-10',
+      reviewerType: 'Parent',
+      reviewerRating: '1-10',
+      timeAgo: '2 weeks ago',
+      title: 'Exceptional education and caring community',
+      content: 'My daughter has been at IAE for 3 years and the growth we\'ve seen is remarkable. The teachers are dedicated, the curriculum is challenging yet supporti...',
+      fullContent: 'My daughter has been at IAE for 3 years and the growth we\'ve seen is remarkable. The teachers are dedicated, the curriculum is challenging yet supportive, and the international community has broadened her perspective tremendously. The IB program preparation is excellent and the university counseling team provided invaluable guidance. Highly recommend this school to any family looking for quality international education.',
+      schoolReply: {
+        name: 'International Academy of Excellence',
+        content: 'Thank you so much for your kind words and trust in IAE. We\'re delighted to hear about your daughter\'s growth and success over the past three years. Our team takes great pride in providing a sup....',
+        fullContent: 'Thank you so much for your kind words and trust in IAE. We\'re delighted to hear about your daughter\'s growth and success over the past three years. Our team takes great pride in providing a supportive and challenging environment where every student can thrive. We truly appreciate your recommendation and are honored to be part of your family\'s educational journey.'
+      }
     },
     {
       id: 2,
-      rating: '5.00',
-      headline: 'Exceptional for Mind and building community',
-      text: 'My daughter has been enrolled for 2 years and has made great progress. The teachers are dedicated, the curriculum is challenging, and the school provides a nurturing environment. Highly recommended.',
-      reviewer: 'John Doe',
-      date: '2 years ago',
-      school: 'International Academy of Excellence'
-    },
-    {
-      id: 3,
-      rating: '5.00',
-      headline: 'Exceptional for Mind and building community',
-      text: 'My daughter has been enrolled for 2 years and has made great progress. The teachers are dedicated, the curriculum is challenging, and the school provides a nurturing environment. Highly recommended.',
-      reviewer: 'John Doe',
-      date: '2 years ago',
-      school: 'International Academy of Excellence'
-    },
-    {
-      id: 4,
-      rating: '5.00',
-      headline: 'Exceptional for Mind and building community',
-      text: 'My daughter has been enrolled for 2 years and has made great progress. The teachers are dedicated, the curriculum is challenging, and the school provides a nurturing environment. Highly recommended.',
-      reviewer: 'John Doe',
-      date: '2 years ago',
-      school: 'International Academy of Excellence'
+      category: 'Academic Excellence',
+      rating: '1-10',
+      reviewerType: 'Parent',
+      reviewerRating: '1-10',
+      timeAgo: '2 weeks ago',
+      title: 'Exceptional education and caring community',
+      content: 'My daughter has been at IAE for 3 years and the growth we\'ve seen is remarkable. The teachers are dedicated, the curriculum is challenging yet supporti...',
+      fullContent: 'My daughter has been at IAE for 3 years and the growth we\'ve seen is remarkable. The teachers are dedicated, the curriculum is challenging yet supportive, and the international community has broadened her perspective tremendously. The IB program preparation is excellent and the university counseling team provided invaluable guidance. Highly recommend this school to any family looking for quality international education.',
+      schoolReply: {
+        name: 'International Academy of Excellence',
+        content: 'Thank you so much for your kind words and trust in IAE. We\'re delighted to hear about your daughter\'s growth and success over the past three years. Our team takes great pride in providing a sup....',
+        fullContent: 'Thank you so much for your kind words and trust in IAE. We\'re delighted to hear about your daughter\'s growth and success over the past three years. Our team takes great pride in providing a supportive and challenging environment where every student can thrive. We truly appreciate your recommendation and are honored to be part of your family\'s educational journey.'
+      }
     }
   ]
 
+  const toggleExpand = (reviewId) => {
+    setExpandedReviews(prev => ({
+      ...prev,
+      [reviewId]: !prev[reviewId]
+    }))
+  }
+
+  const toggleReply = (reviewId) => {
+    setOpenReplies(prev => ({
+      ...prev,
+      [reviewId]: !prev[reviewId]
+    }))
+  }
+
+  const toggleExpandReply = (reviewId) => {
+    setExpandedReplies(prev => ({
+      ...prev,
+      [reviewId]: !prev[reviewId]
+    }))
+  }
+
   return (
-    <section className="py-12 md:py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#1E3A8A' }}>
+    <section className="py-12 md:py-16 bg-transparent">
+      {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
+      <div className="max-w-7xl mx-auto">
+
+        {/* Heading */}
+        {/* <h2 
+          className="text-[32px] font-bold mb-8 text-[#111827] text-center"
+          style={{ fontFamily: 'Poppins, sans-serif' }}
+        >
           Reviews
-        </h2>
+        </h2> */}
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {/* Reviews - Single Column Center */}
+        <div className="grid grid-cols-1 gap-12 mb-8 max-w-4xl mx-auto">
           {reviews.map((review) => (
-            <div key={review.id} className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-              {/* Rating and Date */}
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2">
-                  <span className="text-lg font-bold text-gray-900">{review.rating}</span>
-                  <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
+            <div 
+              key={review.id} 
+              className="bg-white rounded-xl"
+              style={{
+                boxShadow: '0px 1px 2px 0px #0000000D'
+              }}
+            >
+              {/* Academic Excellence Header Row */}
+              <div className="px-8 pt-8 pb-2">
+                <div className="flex items-center gap-[20px] mb-2">
+                  <div className="w-12 h-12 rounded-full bg-[#DBEAFE] flex items-center justify-center flex-shrink-0">
+                    <Image
+                      src="/images/acadmic-excellece.svg"
+                      alt="Academic Excellence"
+                      width={24}
+                      height={24}
+                      className="w-6 h-6 brightness-0 invert"
+                    />
+                  </div>
+                  <h3 
+                    className="font-semibold text-[22px] text-[#1E3A8A]"
+                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
+                  >
+                    {review.category}
+                  </h3>
                 </div>
-                <span className="text-sm text-gray-600">{review.date}</span>
+                {/* Rating below header */}
+                <div className="mb-4">
+                  <span 
+                    className="font-bold text-[22px] text-[#1E3A8A]"
+                    style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}
+                  >
+                    {review.rating}
+                  </span>
+                </div>
               </div>
-              
-              {/* Headline */}
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
-                {review.headline}
-              </h3>
-              
-              {/* Review Text */}
-              <p className="text-gray-700 mb-4 text-sm leading-relaxed">
-                {review.text}
-              </p>
-              
-              {/* Reviewer and Reply */}
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-900">{review.reviewer}</p>
-                  <p className="text-xs text-gray-600">{review.school}</p>
+
+              <div className="px-8 pb-4">
+
+                {/* Parent Review Card */}
+                <div className="mb-4 pt-12">
+                  <div className="flex items-center gap-3">
+                    {/* Avatar */}
+                    <div className="w-12 h-12 rounded-full bg-[#DBEAFE] flex items-center justify-center flex-shrink-0">
+                      <Image
+                        src="/images/double-blue-user-icon.svg"
+                        alt="Parent"
+                        width={24}
+                        height={24}
+                        className="w-4 h-4"
+                      />
+                    </div>
+                    
+                    {/* Badge and Rating/Time Column */}
+                    <div className="flex flex-col">
+                      {/* Badge */}
+                      <div 
+                        className="inline-flex items-center justify-center rounded-full px-4 py-1 mb-2"
+                        style={{ 
+                          backgroundColor: '#F3F4F6',
+                          fontFamily: 'Inter, sans-serif'
+                        }}
+                      >
+                        <span 
+                          className="font-medium text-[12px] text-[#374151]"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
+                        >
+                          {review.reviewerType}
+                        </span>
+                      </div>
+
+                      {/* Rating and Time - Column form below Parent */}
+                      <div className="flex flex-col">
+                        {/* Rating */}
+                        <span 
+                          className="font-bold text-[16px] text-[#1E3A8A]"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}
+                        >
+                          {review.reviewerRating}
+                        </span>
+
+                        {/* Time */}
+                        <span 
+                          className="font-normal text-[12px] text-[#6B7280]"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+                        >
+                          {review.timeAgo}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Review Title */}
+                  <h4 
+                    className="font-semibold text-[16px] text-[#111827] mb-2 mt-3"
+                    style={{ fontFamily: 'Poppins, sans-serif' }}
+                  >
+                    {review.title}
+                  </h4>
+
+                  {/* Review Content - Show full by default */}
+                  <div className="mb-3">
+                    <p 
+                      className="font-normal text-[14px] text-[#374151] leading-relaxed"
+                      style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+                    >
+                      {expandedReviews[review.id] !== undefined ? (expandedReviews[review.id] ? review.fullContent : review.content) : review.fullContent}
+                    </p>
+                    {expandedReviews[review.id] === false && (
+                      <button
+                        onClick={() => toggleExpand(review.id)}
+                        className="underline ml-1"
+                        style={{ fontFamily: 'Inter, sans-serif', color: '#1E3A8A' }}
+                      >
+                        expand
+                      </button>
+                    )}
+                    {expandedReviews[review.id] === true && (
+                      <button
+                        onClick={() => toggleExpand(review.id)}
+                        className="underline ml-1"
+                        style={{ fontFamily: 'Inter, sans-serif', color: '#1E3A8A' }}
+                      >
+                        close
+                      </button>
+                    )}
+                  </div>
+
+                  {/* School Reply Section - Always visible by default */}
+                  <div className="mt-4">
+                    {/* School Name Row */}
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-12 h-12 rounded-full bg-[#1E3A8A] flex items-center justify-center flex-shrink-0">
+                        <Image
+                          src="/images/reply-icon-img.png"
+                          alt="School Reply"
+                          width={48}
+                          height={48}
+                          className="w-12 h-12 rounded-full"
+                        />
+                      </div>
+                      <h5 
+                        className="font-semibold text-[16px] text-[#111827]"
+                        style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 600 }}
+                      >
+                        {review.schoolReply.name}
+                      </h5>
+                    </div>
+
+                    {/* Reply Content */}
+                    <div>
+                      <p 
+                        className="font-normal text-[14px] text-[#374151] leading-relaxed"
+                        style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+                      >
+                        {expandedReplies[review.id] !== undefined ? (expandedReplies[review.id] ? review.schoolReply.fullContent : review.schoolReply.content) : review.schoolReply.fullContent}
+                      </p>
+                      {expandedReplies[review.id] === false && (
+                        <button
+                          onClick={() => toggleExpandReply(review.id)}
+                          className="underline ml-1"
+                          style={{ fontFamily: 'Inter, sans-serif', color: '#1E3A8A' }}
+                        >
+                          expand
+                        </button>
+                      )}
+                      {expandedReplies[review.id] === true && (
+                        <button
+                          onClick={() => toggleExpandReply(review.id)}
+                          className="underline ml-1"
+                          style={{ fontFamily: 'Inter, sans-serif', color: '#1E3A8A' }}
+                        >
+                          close
+                        </button>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <button 
-                  className="px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
-                  style={{ backgroundColor: '#1E3A8A', color: 'white' }}
-                >
-                  Reply
-                </button>
               </div>
             </div>
           ))}
-        </div>
-        
-        {/* See All Reviews Links */}
-        <div className="flex justify-center gap-8">
-          <button className="text-sm font-medium hover:underline" style={{ color: '#1E3A8A' }}>
-            See all reviews
-          </button>
-          <button className="text-sm font-medium hover:underline" style={{ color: '#1E3A8A' }}>
-            See all reviews
-          </button>
         </div>
       </div>
     </section>
   )
 }
-

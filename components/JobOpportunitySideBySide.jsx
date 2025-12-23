@@ -97,13 +97,16 @@ export default function JobOpportunitySideBySide() {
 
   return (
     <section 
-      className="py-12 md:py-16 relative"
-      style={{
-        background: 'radial-gradient(63% 100% at 50% 0%, #D4E7F6 0%, #F1F7FC 82.44%, #F6F7F9 100%)',
-        boxShadow: '0px 0px 0px 6px #FFFFFF'
-      }}
+      className="py-12 md:py-16 relative w-full bg-[#F9FAFB]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div 
+        className="max-w-7xl mx-auto py-4 sm:py-6 lg:py-8"
+        style={{
+          background: 'radial-gradient(63% 100% at 50% 0%, #D4E7F6 0%, #F1F7FC 82.44%, #F6F7F9 100%)',
+          boxShadow: '0px 0px 0px 6px #FFFFFF',
+          borderRadius: '8px'
+        }}
+      >
         {/* Header */}
         <div className="text-center mb-12">
           {/* Jobs Badge */}
@@ -163,7 +166,7 @@ export default function JobOpportunitySideBySide() {
         </div>
 
         {/* Job Cards Grid - 2 cards left, gap 8, 2 cards right */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-0">
           {Array.from({ length: Math.ceil(jobs.length / 4) }).map((_, rowIndex) => {
             const startIndex = rowIndex * 4
             const rowJobs = jobs.slice(startIndex, startIndex + 4)
@@ -171,13 +174,13 @@ export default function JobOpportunitySideBySide() {
             const rightJobs = rowJobs.slice(2, 4)
             
             return (
-              <div key={rowIndex} className="flex gap-8 flex-wrap justify-center">
+              <div key={rowIndex} className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center">
                 {/* Left Group - 2 Cards */}
-                <div className="flex gap-4 flex-1 min-w-0">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-1 min-w-0 bg-[#DBEAFE] rounded-[7px] p-3 sm:p-4">
                   {leftJobs.map((job) => (
                     <div
                       key={job.id}
-                      className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex-1 min-w-0"
+                      className="bg-white rounded-lg p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex-1 min-w-0"
                     >
                       {/* Top Section - Logo and Posted Date */}
                       <div className="flex items-start justify-between mb-3">
@@ -206,7 +209,7 @@ export default function JobOpportunitySideBySide() {
                       </div>
 
                       {/* Job Title */}
-                      <h4 className="text-base font-bold text-gray-800 mb-2">
+                      <h4 className="text-sm sm:text-base font-bold text-gray-800 mb-2">
                         {job.jobTitle}
                       </h4>
 
@@ -240,11 +243,11 @@ export default function JobOpportunitySideBySide() {
 
                 {/* Right Group - 2 Cards */}
                 {rightJobs.length > 0 && (
-                  <div className="flex gap-4 flex-1 min-w-0">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-1 min-w-0 bg-[#DBEAFE] rounded-[7px] p-3 sm:p-4">
                     {rightJobs.map((job) => (
                       <div
                         key={job.id}
-                        className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow flex-1 min-w-0"
+                        className="bg-white rounded-lg p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow flex-1 min-w-0"
                       >
                         {/* Top Section - Logo and Posted Date */}
                         <div className="flex items-start justify-between mb-3">

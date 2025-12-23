@@ -67,9 +67,9 @@ export default function SchoolInsights() {
   }
 
   return (
-    <section className="py-12 md:py-16 bg-white relative">
+    <section className="py-12 md:py-16 bg-[#F9FAFB] relative w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <h2 className="text-4xl font-bold text-[#111827] font-['Poppins',sans-serif] text-center mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold text-[#111827] font-['Poppins',sans-serif] text-center mb-8 sm:mb-12">
           School Insights & Analytics
         </h2>
         
@@ -85,38 +85,38 @@ export default function SchoolInsights() {
               />
           
           {/* Content Grid */}
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ${showModal && !isSubscribed ? 'blur-sm pointer-events-none' : ''}`}>
-            {/* School 1 - Greenwood Academy */}
-            <div className="bg-white rounded-[20px] shadow-md p-6 md:p-8">
-              <h3 className="text-xl md:text-2xl font-bold mb-6 text-gray-900">
-                Performance by Category
-              </h3>
-              {school1Data.map((item, index) => (
-                <CategoryItem key={index} label={item.label} rating={item.rating} icon={item.icon} />
-              ))}
-              <div className="flex justify-end mt-6">
-                <button
-                  className="px-6 py-3 rounded-lg text-white font-medium hover:opacity-90 transition-opacity bg-[#1E3A8A]"
-                >
-                  See Reviews
-                </button>
-              </div>
+          <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 ${showModal && !isSubscribed ? 'blur-sm pointer-events-none' : ''}`}>
+          {/* School 1 - Greenwood Academy */}
+            <div className="bg-white rounded-[20px] shadow-md p-4 sm:p-6 md:p-8">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 text-gray-900">
+              Performance by Category
+            </h3>
+            {school1Data.map((item, index) => (
+              <CategoryItem key={index} label={item.label} rating={item.rating} icon={item.icon} />
+            ))}
+            <div className="flex justify-end mt-6">
+              <button
+                className="px-6 py-3 rounded-lg text-white font-medium hover:opacity-90 transition-opacity bg-[#1E3A8A]"
+              >
+                See Reviews
+              </button>
             </div>
-            
-            {/* School 2 - American School of Dubai */}
-            <div className="bg-white rounded-[20px] shadow-md p-6 md:p-8">
-              <h3 className="text-xl md:text-2xl font-bold mb-6 text-gray-900">
-                Performance by Category
-              </h3>
-              {school2Data.map((item, index) => (
-                <CategoryItem key={index} label={item.label} rating={item.rating} icon={item.icon} />
-              ))}
-              <div className="flex justify-end mt-6">
-                <button
-                  className="px-6 py-3 rounded-lg text-white font-medium hover:opacity-90 transition-opacity bg-[#1E3A8A]"
-                >
-                  See Reviews
-                </button>
+          </div>
+          
+          {/* School 2 - American School of Dubai */}
+            <div className="bg-white rounded-[20px] shadow-md p-4 sm:p-6 md:p-8">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 text-gray-900">
+              Performance by Category
+            </h3>
+            {school2Data.map((item, index) => (
+              <CategoryItem key={index} label={item.label} rating={item.rating} icon={item.icon} />
+            ))}
+            <div className="flex justify-end mt-6">
+              <button
+                className="px-6 py-3 rounded-lg text-white font-medium hover:opacity-90 transition-opacity bg-[#1E3A8A]"
+              >
+                See Reviews
+              </button>
               </div>
             </div>
           </div>

@@ -32,9 +32,12 @@ export default function CampusGallery() {
   ]
 
   return (
-    <section className="py-12 md:py-16 bg-white">
+    <section className="py-12 md:py-16 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12" style={{ color: '#1E3A8A' }}>
+        <h2 
+          className="text-[32px] font-bold mb-8 text-[#111827] text-center"
+          style={{ fontFamily: 'Poppins, sans-serif' }}
+        >
           Campus Gallery
         </h2>
         
