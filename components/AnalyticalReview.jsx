@@ -8,15 +8,15 @@ export default function AnalyticalReview() {
         <div className="rounded-[30px] p-4 mt-12 overflow-visible">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start">
             {/* Left Side - Images */}
-            <div className="relative lg:col-span-7 overflow-visible lg:min-h-[470px] min-h-[250px]">``
+            <div className="relative lg:col-span-7 overflow-hidden lg:overflow-visible lg:min-h-[470px] min-h-[300px] sm:min-h-[350px]">
               {/* Bottom Image - experience-dif5.png (Behind, Position Absolute) */}
-              <div className="absolute top-[50%] lg:top-[216px] left-1/2 lg:left-[289px] -translate-x-1/2 lg:translate-x-0 z-0 w-[60%] max-w-[301px] lg:w-[301px]">
+              <div className="absolute top-[45%] sm:top-[50%] md:top-[55%] lg:top-[216px] left-1/2 lg:left-[289px] -translate-x-1/2 lg:translate-x-0 z-0 w-[50%] sm:w-[45%] md:w-[40%] max-w-[301px] lg:w-[301px]">
                 <Image
                   src="/images/experience-dif5.png"
                   alt="Overall Rating Card"
                   width={301}
                   height={252}
-                  className="w-full h-auto lg:w-[301px] lg:h-[252px] object-cover"
+                  className="w-full h-auto object-cover"
                   style={{
                     boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.21)',
                     borderRadius: '9px'
@@ -24,13 +24,13 @@ export default function AnalyticalReview() {
                 />
               </div>
               {/* Top Image - experience-dif4.png (On Top, Position Relative) */}
-              <div className="relative z-10 w-full max-w-[348px] mx-auto lg:mx-0">
+              <div className="relative z-10 w-full max-w-full sm:max-w-[300px] md:max-w-[348px] mx-auto lg:mx-0">
                 <Image
                   src="/images/experience-dif4.png"
                   alt="Performance by Category Card"
                   width={348}
                   height={231}
-                  className="w-full h-auto lg:w-[347.69px] lg:h-[231px] object-cover rounded-[7.35px]"
+                  className="w-full h-auto object-cover rounded-[7.35px]"
                 />
               </div>
             </div>
