@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function SchoolRatings() {
   return (
-    <section className="py-0 bg-white relative z-0">
+    <section className="py-8 sm:py-12 lg:py-16 bg-white relative z-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Main Content Card with Border */}
         <div className="rounded-[30px] p-4 mt-12 overflow-visible">
@@ -26,15 +26,15 @@ export default function SchoolRatings() {
             </div>
 
             {/* Right Side - Images */}
-            <div className="relative lg:col-span-7 overflow-visible lg:min-h-[470px] min-h-[250px] order-1 lg:order-2">
+            <div className="relative lg:col-span-7 overflow-hidden lg:overflow-visible lg:min-h-[470px] min-h-[300px] sm:min-h-[350px] order-1 lg:order-2">
               {/* Bottom Image - experience-dif3.png (Behind, Position Absolute) */}
-              <div className="absolute top-[50%] lg:top-[216px] left-1/2 lg:left-[289px] -translate-x-1/2 lg:translate-x-0 z-0 w-[60%] max-w-[301px] lg:w-[301px]">
+              <div className="absolute top-[45%] sm:top-[50%] md:top-[55%] lg:top-[216px] left-1/2 lg:left-[289px] -translate-x-1/2 lg:translate-x-0 z-0 w-[50%] sm:w-[45%] md:w-[40%] max-w-[301px] lg:w-[301px]">
                 <Image
                   src="/images/experience-dif3.png"
                   alt="School Rating Detail"
                   width={301}
                   height={252}
-                  className="w-full h-auto lg:w-[301px] lg:h-[252px] object-cover"
+                  className="w-full h-auto object-cover"
                   style={{
                     boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.21)',
                     borderRadius: '9px'
@@ -42,13 +42,13 @@ export default function SchoolRatings() {
                 />
               </div>
               {/* Top Image - experience-dif2.png (On Top, Position Relative) */}
-              <div className="relative z-10 w-full max-w-[513px] mx-auto lg:mx-0">
+              <div className="relative z-10 w-full max-w-full sm:max-w-[450px] md:max-w-[513px] mx-auto lg:mx-0">
                 <Image
                   src="/images/experience-dif2.png"
                   alt="School Rating Card"
                   width={513}
                   height={229}
-                  className="w-full h-auto lg:w-[513px] lg:h-[229px] object-cover rounded-[9px]"
+                  className="w-full h-auto object-cover rounded-[9px]"
                 />
               </div>
               {/* Orange Arrow - Pointing to Rating Section */}

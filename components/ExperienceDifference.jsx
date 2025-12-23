@@ -18,25 +18,25 @@ export default function ExperienceDifference() {
         <div className="rounded-[30px] p-4 mt-12 border border-[#1E3A8A33] overflow-visible">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start">
             {/* Left Side - Images */}
-            <div className="relative lg:col-span-7 overflow-visible lg:min-h-[600px] min-h-[300px]">
+            <div className="relative lg:col-span-7 overflow-hidden lg:overflow-visible lg:min-h-[600px] min-h-[400px] sm:min-h-[450px]">
               {/* Top Image - experience-dif.png (Position Relative) */}
-              <div className="relative w-full">
+              <div className="relative w-full z-10">
                 <Image
                   src="/images/experience-dif.png"
                   alt="School Job Opportunities"
                   width={408}
                   height={234}
-                  className="w-full max-w-[408px] h-auto lg:w-[408px] lg:h-[234px] rounded-lg object-cover mx-auto lg:mx-0"
+                  className="w-full max-w-full sm:max-w-[350px] md:max-w-[408px] h-auto lg:w-[408px] lg:h-[234px] rounded-lg object-cover mx-auto lg:mx-0"
                 />
               </div>
-              {/* Bottom Image - experience-dif1.png (Position Absolute - Top 210px, Left 50px) */}
-              <div className="absolute top-[50%] lg:top-[210px] left-1/2 lg:left-[50px] -translate-x-1/2 lg:translate-x-0 z-10 w-[90%] max-w-[634px] lg:w-[634px]">
+              {/* Bottom Image - experience-dif1.png (Position Absolute) */}
+              <div className="absolute top-[40%] sm:top-[45%] md:top-[50%] lg:top-[210px] left-1/2 lg:left-[50px] -translate-x-1/2 lg:translate-x-0 z-10 w-[85%] sm:w-[80%] md:w-[75%] max-w-[634px] lg:w-[634px]">
                 <Image
                   src="/images/experience-dif1.png"
                   alt="Job Detail"
                   width={634}
                   height={383}
-                  className="w-full h-auto lg:w-[634px] lg:h-[383px] rounded-lg shadow-2xl object-cover"
+                  className="w-full h-auto rounded-lg shadow-2xl object-cover"
                 />
               </div>
             </div>
