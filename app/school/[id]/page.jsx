@@ -6,9 +6,10 @@ import SchoolOpportunities from '@/components/SchoolOpportunities'
 import StudentInsights from '@/components/StudentInsights'
 import SchoolReviews from '@/components/SchoolReviews'
 import YouAlsoLiked from '@/components/YouAlsoLiked'
-import NewsroomSection from '@/components/NewsroomSection'
-import NewsroomArticle from '@/components/NewsroomArticle'
-import CallToAction from '@/components/CallToAction'
+import MoreFromLocation from '@/components/MoreFromLocation'
+import ArticleHeader from '@/components/ArticleHeader'
+import ArticleContent from '@/components/ArticleContent'
+import ArticleSteps from '@/components/ArticleSteps'
 import Link from 'next/link'
 
 export default async function SchoolDetailPage({ params }) {
@@ -25,11 +26,19 @@ export default async function SchoolDetailPage({ params }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <SchoolReviews />
         <YouAlsoLiked />
-        <NewsroomSection />
-        <NewsroomArticle />
-        <NewsroomSection title="More From Our Newsroom" />
       </div>
-      <CallToAction />
+      
+      {/* Article Header Section */}
+      <ArticleHeader />
+      
+      {/* Article Content Section */}
+      <ArticleContent />
+      
+      {/* Article Steps Section */}
+      <ArticleSteps />
+      
+      {/* More from Location Section */}
+      <MoreFromLocation />
       
       {/* Share Experience Section */}
       <section className="py-16 md:py-20 lg:py-24 bg-white">

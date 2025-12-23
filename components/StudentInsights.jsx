@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import RatingSummary from './RatingSummary'
 import SubscribeModal from './SubscribeModal'
+import ReviewsSection from './ReviewsSection'
 
 export default function StudentInsights() {
   const [activeTab, setActiveTab] = useState('reviews')
@@ -69,19 +70,19 @@ export default function StudentInsights() {
             : 'bg-white'
         }`}
       >
-        {/* Top Section: Icon, Label, Rating */}
+        {/* Top Section: Icon, Label, Rating/1-10 */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             {/* Icon with circular background */}
             <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 ${
-              isPrimary ? 'bg-[#3B82F6] border border-white' : 'bg-[#DBEAFE]'
+              isPrimary ? 'bg-[#DBEAFE] border border-[#1E3A8A]' : 'bg-[#DBEAFE]'
             }`}>
               <Image
                 src={category.icon}
                 alt={category.label}
                 width={24}
                 height={24}
-                className={`w-6 h-6 ${isPrimary ? 'brightness-0 invert' : ''}`}
+                className="w-6 h-6"
               />
             </div>
             {/* Label */}
@@ -91,33 +92,19 @@ export default function StudentInsights() {
               {category.label}
             </span>
           </div>
-          {/* Rating */}
-          <span className={`font-bold text-base ${
+          {/* 1-10 */}
+          <span className={`font-medium text-base ${
             isPrimary ? 'text-white' : 'text-[#111827]'
           }`}>
-            {category.rating}
+            1-10
           </span>
         </div>
         
-        {/* Bottom Section: Stars and Progress Bar */}
-        <div className="space-y-3">
-          {/* Stars */}
-          <div className="flex items-center gap-1">
-            {[...Array(5)].map((_, i) => (
-              <Image
-                key={i}
-                src="/images/yellow-star-icon.svg"
-                alt="Star"
-                width={16}
-                height={16}
-                className="w-4 h-4"
-              />
-            ))}
-          </div>
-          
+        {/* Bottom Section: Progress Bar */}
+        <div>
           {/* Progress Bar */}
           <div className={`w-full rounded-full h-2 overflow-hidden ${
-            isPrimary ? 'bg-[#3B82F6]' : 'bg-[#E5E7EB]'
+            isPrimary ? 'bg-[#DBEAFE]' : 'bg-[#E5E7EB]'
           }`}>
             <div
               className={`h-2 rounded-full transition-all ${
@@ -132,10 +119,11 @@ export default function StudentInsights() {
   }
 
   return (
-    <section className="py-12 md:py-16 bg-gray-50">
+    <section className="py-12 md:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Tabbed Navigation */}
-        <div className="flex items-end justify-center mb-8">
+        <div className="bg-gray-50 py-4 px-4 rounded-t-lg mb-8">
+          <div className="flex items-end justify-center">
           <button
             onClick={() => setActiveTab('reviews')}
             className={`px-6 py-3 bg-white rounded-t-lg transition-colors relative ${
@@ -164,6 +152,7 @@ export default function StudentInsights() {
               <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#1E3A8A] rounded-t-full"></div>
             )}
           </button>
+          </div>
         </div>
 
         {/* Reviews Tab Content */}
@@ -198,10 +187,11 @@ export default function StudentInsights() {
             
             {/* Right Section - Performance by Category (8 columns) */}
             <div className="lg:col-span-8">
-              <h3 className="text-xl font-bold mb-6 text-[#111827]">
-                Performance by Category
-              </h3>
+              
               <div className="bg-[#F9FAFB] rounded-[16px] p-[32px]">
+                <h3 className="text-xl font-bold mb-6 text-[#111827]">
+                  Performance by Category
+                </h3>
                 <div className="space-y-4">
                   {/* Row 1: Academic Excellence and Teaching Quality */}
                   <div className="flex flex-col md:flex-row gap-4">
@@ -234,14 +224,9 @@ export default function StudentInsights() {
             </div>
           </div>
           
-          {/* Action Buttons */}
-          <div className="flex gap-3 mt-8 justify-center">
-            <button className="px-6 py-2 rounded-lg border border-[#1E3A8A] bg-white text-[#1E3A8A] font-medium text-sm hover:opacity-90 transition-opacity">
-              View Detail
-            </button>
-            <button className="px-6 py-2 rounded-lg bg-[#1E3A8A] text-white font-medium text-sm hover:opacity-90 transition-opacity">
-              Apply Now
-            </button>
+          {/* Reviews Section with Grey Background */}
+          <div className="bg-gray-50 w-full  py-12 md:py-16 mt-4">
+            <ReviewsSection />
           </div>
             </div>
           </>

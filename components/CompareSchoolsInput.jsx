@@ -117,13 +117,14 @@ export default function CompareSchoolsInput() {
       
       {/* Comparison Cards */}
       {showComparison && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="py-6 sm:py-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12">
           {schools.map((school) => (
             <div key={school.id} className="space-y-4">
               {/* Main Card */}
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 {/* Image */}
-                <div className="relative h-64 rounded-t-lg overflow-hidden">
+                <div className="relative h-48 sm:h-56 md:h-64 rounded-t-lg overflow-hidden">
                   <div className="w-full h-full bg-gray-200 relative">
                     <Image
                       src={school.image}
@@ -291,6 +292,7 @@ export default function CompareSchoolsInput() {
               </div>
             </div>
           ))}
+          </div>
         </div>
       )}
     </section>
