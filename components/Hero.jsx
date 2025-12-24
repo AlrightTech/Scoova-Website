@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import SearchBox from './SearchBox'
 import Stats from './Stats'
 
@@ -51,7 +52,8 @@ export default function Hero() {
       </div>
 
       {/* Talk with Us Floating Button */}
-      <button 
+      <Link 
+        href="/contact"
         className="fixed bottom-6 right-6 flex items-center gap-2 text-white px-4 sm:px-6 py-3 sm:py-4 font-sans font-medium text-sm hover:opacity-90 transition-opacity rounded-[12px] shadow-lg z-50"
         style={{ backgroundColor: '#1E3A8A' }}
       >
@@ -61,7 +63,7 @@ export default function Hero() {
           className="w-5 h-5 sm:w-6 sm:h-6"
         />
         <span>Talk with Us</span>
-      </button>
+      </Link>
     </section>
   )
 }
