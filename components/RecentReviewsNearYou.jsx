@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function RecentReviewsNearYou() {
   const reviews = [
@@ -87,14 +88,15 @@ export default function RecentReviewsNearYou() {
 
         {/* View All Reviews Button */}
         <div className="text-center">
-          <button 
-            className="px-20 py-3 rounded-lg text-white font-semibold hover:opacity-90 transition-opacity bg-[#3751A2] border border-white text-[14spx] font-['Poppins',sans-serif]"
+          <Link
+            href="/schools"
+            className="inline-block px-20 py-3 rounded-lg text-white font-semibold hover:opacity-90 transition-opacity bg-[#3751A2] border border-white text-[14px] font-['Poppins',sans-serif]"
             style={{
               boxShadow: '0px 4px 6px 0px rgba(0, 0, 0, 0.1)'
             }}
           >
             View All Reviews
-          </button>
+          </Link>
         </div>
       </div>
     </section>

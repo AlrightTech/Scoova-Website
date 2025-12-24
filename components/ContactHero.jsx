@@ -36,7 +36,7 @@ export default function ContactHero() {
                 Explore Schools
               </Link>
               <Link
-                href="/review"
+                href="/write-review"
                 className="px-8 py-3 rounded-xl font-normal hover:opacity-90 transition-opacity text-center border border-[#1E3A8A] flex items-center justify-center"
                 style={{ 
                   color: '#1E3A8A',

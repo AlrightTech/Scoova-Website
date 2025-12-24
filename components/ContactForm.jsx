@@ -204,12 +204,13 @@ export default function ContactForm() {
                     >
                       Email
                     </h3>
-                    <p 
-                      className="text-gray-600"
+                    <a
+                      href="mailto:support@scova.com"
+                      className="text-gray-600 hover:text-[#1E3A8A] transition-colors"
                       style={{ fontFamily: 'Inter, sans-serif' }}
                     >
                       support@scova.com
-                    </p>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -229,12 +230,13 @@ export default function ContactForm() {
                     >
                       Phone
                     </h3>
-                    <p 
-                      className="text-gray-600"
+                    <a
+                      href="tel:+441234567890"
+                      className="text-gray-600 hover:text-[#1E3A8A] transition-colors"
                       style={{ fontFamily: 'Inter, sans-serif' }}
                     >
                       +44 123 456 7890
-                    </p>
+                    </a>
                   </div>
                 </div>
               </div>

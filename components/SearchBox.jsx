@@ -29,7 +29,7 @@ export default function SearchBox() {
             <select
               value={location} 
               onChange={(e) => setLocation(e.target.value)}
-              className="appearance-none bg-transparent outline-none text-gray-600 cursor-pointer pr-6 w-full text-sm sm:text-base"
+              className="appearance-none bg-transparent outline-none text-gray-600 cursor-pointer pr-6 w-full text-sm sm:text-base font-sans"
             >
               <option value="all">All Countries</option>
               <option value="us">United States</option>
@@ -47,7 +47,7 @@ export default function SearchBox() {
         {/* Search Button - Far right */}
         <button 
           className="text-white px-6 sm:px-8 py-3 sm:py-5 font-sans font-normal text-sm sm:text-base hover:opacity-90 transition-opacity rounded-[12px] w-full md:w-auto" 
-          style={{ backgroundColor: '#1E3A8A' }}
+          style={{ backgroundColor: '#1E3A8A', fontFamily: 'Inter, sans-serif' }}
         >
           Search
         </button>

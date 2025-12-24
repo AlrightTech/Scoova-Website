@@ -66,19 +66,18 @@ export default function ReviewsSection() {
 
   return (
     <section className="py-12 md:py-16 bg-transparent">
-      {/* <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> */}
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Heading */}
-        {/* <h2 
+        <h2 
           className="text-[32px] font-bold mb-8 text-[#111827] text-center"
           style={{ fontFamily: 'Poppins, sans-serif' }}
         >
           Reviews
-        </h2> */}
+        </h2>
         
-        {/* Reviews - Single Column Center */}
-        <div className="grid grid-cols-1 gap-12 mb-8 max-w-4xl mx-auto">
+        {/* Reviews - Two Columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {reviews.map((review) => (
             <div 
               key={review.id} 
@@ -90,24 +89,24 @@ export default function ReviewsSection() {
               {/* Academic Excellence Header Row */}
               <div className="px-8 pt-8 pb-2">
                 <div className="flex items-center gap-[20px] mb-2">
-                  <div className="w-12 h-12 rounded-full bg-[#DBEAFE] flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#DBEAFE] flex items-center justify-center flex-shrink-0">
                     <Image
                       src="/images/acadmic-excellece.svg"
                       alt="Academic Excellence"
                       width={24}
                       height={24}
-                      className="w-6 h-6 brightness-0 invert"
+                      className="w-4 h-4"
                     />
                   </div>
                   <h3 
-                    className="font-semibold text-[22px] text-[#1E3A8A]"
+                    className="font-semibold text-[20px] text-[#1E3A8A]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600 }}
                   >
                     {review.category}
                   </h3>
                 </div>
                 {/* Rating below header */}
-                <div className="mb-4">
+                <div className="">
                   <span 
                     className="font-bold text-[22px] text-[#1E3A8A]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}
@@ -151,8 +150,8 @@ export default function ReviewsSection() {
                         </span>
                       </div>
 
-                      {/* Rating and Time - Column form below Parent */}
-                      <div className="flex flex-col">
+                      {/* Rating and Time - Row form with gap */}
+                      <div className="flex items-center gap-2.5">
                         {/* Rating */}
                         <span 
                           className="font-bold text-[16px] text-[#1E3A8A]"
@@ -180,36 +179,64 @@ export default function ReviewsSection() {
                     {review.title}
                   </h4>
 
-                  {/* Review Content - Show full by default */}
+                  {/* Review Content - Show truncated by default */}
                   <div className="mb-3">
                     <p 
-                      className="font-normal text-[14px] text-[#374151] leading-relaxed"
+                      className="font-normal text-[14px] text-[#374151] leading-relaxed inline"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                     >
-                      {expandedReviews[review.id] !== undefined ? (expandedReviews[review.id] ? review.fullContent : review.content) : review.fullContent}
+                      {expandedReviews[review.id] ? review.fullContent : review.content}
                     </p>
-                    {expandedReviews[review.id] === false && (
+                    {!expandedReviews[review.id] && (
                       <button
                         onClick={() => toggleExpand(review.id)}
-                        className="underline ml-1"
-                        style={{ fontFamily: 'Inter, sans-serif', color: '#1E3A8A' }}
+                        className="text-[#1E3A8A] underline ml-1"
+                        style={{ fontFamily: 'Inter, sans-serif' }}
                       >
                         expand
                       </button>
                     )}
-                    {expandedReviews[review.id] === true && (
+                    {expandedReviews[review.id] && (
                       <button
                         onClick={() => toggleExpand(review.id)}
-                        className="underline ml-1"
-                        style={{ fontFamily: 'Inter, sans-serif', color: '#1E3A8A' }}
+                        className="text-[#1E3A8A] underline ml-1"
+                        style={{ fontFamily: 'Inter, sans-serif' }}
                       >
                         close
                       </button>
                     )}
                   </div>
 
-                  {/* School Reply Section - Always visible by default */}
-                  <div className="mt-4">
+                  {/* Reply Button with Dropdown */}
+                  <div className="mb-4">
+                    <button
+                      onClick={() => toggleReply(review.id)}
+                      className="flex items-center gap-1 text-[#374151] font-normal text-sm hover:text-[#1E3A8A] transition-colors"
+                      style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+                    >
+                      <span>Reply</span>
+                      <svg 
+                        width="12" 
+                        height="12" 
+                        viewBox="0 0 12 12" 
+                        fill="none" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        className={`transition-transform ${openReplies[review.id] ? 'rotate-180' : ''}`}
+                      >
+                        <path 
+                          d="M9 4L6 7L3 4" 
+                          stroke="currentColor" 
+                          strokeWidth="1.5" 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* School Reply Section - Toggleable */}
+                  {openReplies[review.id] && (
+                    <div className="mt-4 pt-4 ">
                     {/* School Name Row */}
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-12 h-12 rounded-full bg-[#1E3A8A] flex items-center justify-center flex-shrink-0">
@@ -229,32 +256,46 @@ export default function ReviewsSection() {
                       </h5>
                     </div>
 
-                    {/* Reply Content */}
-                    <div>
-                      <p 
-                        className="font-normal text-[14px] text-[#374151] leading-relaxed"
+                      {/* Reply Content */}
+                      <div>
+                        <p 
+                          className="font-normal text-[14px] text-[#374151] leading-relaxed inline"
+                          style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
+                        >
+                          {expandedReplies[review.id] ? review.schoolReply.fullContent : review.schoolReply.content}
+                        </p>
+                        {!expandedReplies[review.id] && (
+                          <button
+                            onClick={() => toggleExpandReply(review.id)}
+                            className="text-[#1E3A8A] underline ml-1"
+                            style={{ fontFamily: 'Inter, sans-serif' }}
+                          >
+                            expand
+                          </button>
+                        )}
+                        {expandedReplies[review.id] && (
+                          <button
+                            onClick={() => toggleExpandReply(review.id)}
+                            className="text-[#1E3A8A] underline ml-1"
+                            style={{ fontFamily: 'Inter, sans-serif' }}
+                          >
+                            close
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* See All Review and Replies Link */}
+                  <div className="mt-4 pt-4">
+                    <div className="flex justify-end">
+                      <a
+                        href="#"
+                        className="text-[#1E3A8A] font-normal text-sm hover:underline"
                         style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
                       >
-                        {expandedReplies[review.id] !== undefined ? (expandedReplies[review.id] ? review.schoolReply.fullContent : review.schoolReply.content) : review.schoolReply.fullContent}
-                      </p>
-                      {expandedReplies[review.id] === false && (
-                        <button
-                          onClick={() => toggleExpandReply(review.id)}
-                          className="underline ml-1"
-                          style={{ fontFamily: 'Inter, sans-serif', color: '#1E3A8A' }}
-                        >
-                          expand
-                        </button>
-                      )}
-                      {expandedReplies[review.id] === true && (
-                        <button
-                          onClick={() => toggleExpandReply(review.id)}
-                          className="underline ml-1"
-                          style={{ fontFamily: 'Inter, sans-serif', color: '#1E3A8A' }}
-                        >
-                          close
-                        </button>
-                      )}
+                        See All Review and Replies
+                      </a>
                     </div>
                   </div>
                 </div>
