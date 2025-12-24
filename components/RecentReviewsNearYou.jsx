@@ -1,7 +1,21 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { useAuth } from '@/contexts/AuthContext'
+import { useRouter } from 'next/navigation'
 
 export default function RecentReviewsNearYou() {
+  const { isSubscribed, isLoggedIn } = useAuth()
+  const router = useRouter()
+
+  const handleSubscribeClick = () => {
+    if (!isLoggedIn) {
+      router.push('/signin?returnUrl=/pricing')
+    } else {
+      router.push('/pricing')
+    }
+  }
   const reviews = [
     {
       id: 1,
@@ -65,8 +79,8 @@ export default function RecentReviewsNearYou() {
                 />
               </div>
 
-              {/* Review Text */}
-              <p className="mb-4 text-[#4A5568] text-[16px] font-normal font-['Inter',sans-serif]">
+              {/* Review Text - Blurred if not subscribed */}
+              <p className={`mb-4 text-[#4A5568] text-[16px] font-normal font-['Inter',sans-serif] ${!isSubscribed ? 'blur-sm select-none' : ''}`}>
                 {review.text}
               </p>
 
@@ -86,18 +100,32 @@ export default function RecentReviewsNearYou() {
           ))}
         </div>
 
-        {/* View All Reviews Button */}
-        <div className="text-center">
-          <Link
-            href="/schools"
-            className="inline-block px-20 py-3 rounded-lg text-white font-semibold hover:opacity-90 transition-opacity bg-[#3751A2] border border-white text-[14px] font-['Poppins',sans-serif]"
-            style={{
-              boxShadow: '0px 4px 6px 0px rgba(0, 0, 0, 0.1)'
-            }}
-          >
-            View All Reviews
-          </Link>
-        </div>
+        {/* Subscribe Button - Show if not subscribed */}
+        {!isSubscribed ? (
+          <div className="text-center">
+            <button
+              onClick={handleSubscribeClick}
+              className="inline-block px-8 py-3 rounded-lg text-white font-semibold hover:opacity-90 transition-opacity bg-[#3751A2] border border-white text-[14px] font-['Poppins',sans-serif]"
+              style={{
+                boxShadow: '0px 4px 6px 0px rgba(0, 0, 0, 0.1)'
+              }}
+            >
+              Subscribe to Read Full Reviews
+            </button>
+          </div>
+        ) : (
+          <div className="text-center">
+            <Link
+              href="/schools"
+              className="inline-block px-20 py-3 rounded-lg text-white font-semibold hover:opacity-90 transition-opacity bg-[#3751A2] border border-white text-[14px] font-['Poppins',sans-serif]"
+              style={{
+                boxShadow: '0px 4px 6px 0px rgba(0, 0, 0, 0.1)'
+              }}
+            >
+              View All Reviews
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   )

@@ -48,35 +48,37 @@ export default function WhatWeBelieve() {
         </div>
         
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {values.map((value, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-6 border border-gray-100">
-              <div 
-                className="w-16 h-16 rounded-lg flex items-center justify-center mb-4"
-                style={{ backgroundColor: value.bgColor }}
-              >
-                <Image
-                  src={value.icon}
-                  alt={value.title}
-                  width={32}
-                  height={32}
-                  className="w-8 h-8"
-                />
+        <div className="flex justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((value, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-md p-6 border border-gray-100 text-center">
+                <div 
+                  className="w-16 h-16 rounded-lg flex items-center justify-center mb-4 mx-auto"
+                  style={{ backgroundColor: value.bgColor }}
+                >
+                  <Image
+                    src={value.icon}
+                    alt={value.title}
+                    width={32}
+                    height={32}
+                    className="w-8 h-8"
+                  />
+                </div>
+                <h3 
+                  className="text-xl font-bold mb-3 text-gray-900"
+                  style={{ fontFamily: 'Poppins, sans-serif' }}
+                >
+                  {value.title}
+                </h3>
+                <p 
+                  className="text-gray-600 leading-relaxed"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  {value.description}
+                </p>
               </div>
-              <h3 
-                className="text-xl font-bold mb-3 text-gray-900"
-                style={{ fontFamily: 'Poppins, sans-serif' }}
-              >
-                {value.title}
-              </h3>
-              <p 
-                className="text-gray-600 leading-relaxed"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                {value.description}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

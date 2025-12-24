@@ -5,11 +5,7 @@ import SchoolOverview from '@/components/SchoolOverview'
 import SchoolOpportunities from '@/components/SchoolOpportunities'
 import StudentInsights from '@/components/StudentInsights'
 import YouAlsoLiked from '@/components/YouAlsoLiked'
-import MoreFromLocation from '@/components/MoreFromLocation'
-import ArticleHeader from '@/components/ArticleHeader'
-import ArticleContent from '@/components/ArticleContent'
-import ArticleSteps from '@/components/ArticleSteps'
-import LatestFromSanFrancisco from '@/components/LatestFromSanFrancisco'
+import UnlockSubscriptionCard from '@/components/UnlockSubscriptionCard'
 import Link from 'next/link'
 
 export default async function SchoolDetailPage({ params }) {
@@ -27,20 +23,8 @@ export default async function SchoolDetailPage({ params }) {
         <YouAlsoLiked />
       </div>
       
-      {/* Latest from San Francisco Section */}
-      <LatestFromSanFrancisco />
-      
-      {/* Article Header Section */}
-      <ArticleHeader />
-      
-      {/* Article Content Section */}
-      <ArticleContent />
-      
-      {/* Article Steps Section */}
-      <ArticleSteps />
-      
-      {/* More from Location Section */}
-      <MoreFromLocation />
+      {/* Unlock Subscription Card Section */}
+      <UnlockSubscriptionCard />
       
       {/* Share Experience Section */}
       <section className="py-16 md:py-20 lg:py-24 bg-white">

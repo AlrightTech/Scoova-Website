@@ -2,8 +2,11 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { useAuth } from '@/contexts/AuthContext'
+import SubscribeModal from './SubscribeModal'
 
 export default function SchoolOpportunities() {
+  const { isSubscribed } = useAuth()
   const jobs = [
     {
       id: 1,
@@ -59,7 +62,21 @@ export default function SchoolOpportunities() {
         </div>
 
         {/* Job Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="relative">
+          {/* Subscription Modal */}
+          {!isSubscribed && (
+            <SubscribeModal 
+              isOpen={!isSubscribed} 
+              onClose={() => {}}
+              title="Unlock And See School Jobs"
+              buttonText="Subscribe To Apply For Jobs"
+              showFeatures={false}
+              iconColor="#F59E0B"
+              iconType="refresh"
+            />
+          )}
+          
+          <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 ${!isSubscribed ? 'blur-sm pointer-events-none' : ''}`}>
           {jobs.map((job) => (
             <div
               key={job.id}
@@ -122,6 +139,7 @@ export default function SchoolOpportunities() {
               </div>
             </div>
           ))}
+          </div>
         </div>
       </div>
     </section>

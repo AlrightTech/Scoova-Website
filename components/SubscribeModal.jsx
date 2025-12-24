@@ -9,7 +9,9 @@ export default function SubscribeModal({
   onClose, 
   title = "Subscribe to Unlock and See School Insights & Analytics",
   buttonText = "Subscribe School",
-  showFeatures = true
+  showFeatures = true,
+  iconColor = '#F59E0B', // Default orange
+  iconType = 'refresh' // 'refresh' or 'headset'
 }) {
   if (!isOpen) return null
 
@@ -40,22 +42,38 @@ export default function SubscribeModal({
 
           {/* Content */}
           <div className="p-8">
-            {/* Orange Headset Icon - Large Circular */}
+            {/* Icon - Large Circular */}
             <div className="flex justify-center mb-6">
-              <div className="w-24 h-24 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F59E0B' }}>
-                <svg 
-                  className="w-14 h-14 text-white" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" 
-                  />
-                </svg>
+              <div className="w-24 h-24 rounded-full flex items-center justify-center" style={{ backgroundColor: iconColor }}>
+                {iconType === 'refresh' ? (
+                  <svg 
+                    className="w-14 h-14 text-white" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" 
+                    />
+                  </svg>
+                ) : (
+                  <svg 
+                    className="w-14 h-14 text-white" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" 
+                    />
+                  </svg>
+                )}
               </div>
             </div>
 
@@ -124,17 +142,22 @@ export default function SubscribeModal({
             </div>
             )}
 
-            {/* Subscribe Button - Orange */}
+            {/* Subscribe Button */}
             <Link
               href="/pricing"
               className="block w-full text-center px-6 py-4 rounded-lg text-white font-semibold text-lg hover:opacity-90 transition-opacity"
               style={{ 
-                backgroundColor: '#F59E0B',
+                backgroundColor: iconColor,
                 fontFamily: 'Poppins, sans-serif'
               }}
               onClick={onClose}
             >
-              {buttonText}
+              <span className="flex items-center justify-center gap-2">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                {buttonText}
+              </span>
             </Link>
           </div>
         </div>

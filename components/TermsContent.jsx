@@ -114,18 +114,32 @@ export default function TermsContent() {
     <section className="py-16 md:py-20 lg:py-24 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Content Sections */}
-        <div className="space-y-8 mb-12">
+        <div 
+          className="space-y-8 mb-12 border rounded-xl p-8"
+          style={{ 
+            borderColor: '#F3F4F6',
+            boxShadow: '0px 1px 2px 0px #0000000D'
+          }}
+        >
           {sections.map((section, index) => (
-            <div key={index} className="flex gap-6">
+            <div 
+              key={index} 
+              className={`flex gap-6 ${index > 0 ? 'pt-8' : ''}`}
+              style={index > 0 ? { borderTop: '1px solid #E5E7EB' } : {}}
+            >
               {/* Number Icon */}
               <div className="flex-shrink-0">
                 <div 
-                  className="w-12 h-12 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: '#EFF6FF' }}
+                  className="w-[28px] h-[28px] rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: '#DBEAFE' }}
                 >
                   <span 
-                    className="text-xl font-bold"
-                    style={{ color: '#1E3A8A', fontFamily: 'Poppins, sans-serif' }}
+                    style={{ 
+                      color: '#1E3A8A', 
+                      fontFamily: 'Poppins, sans-serif',
+                      fontWeight: 700,
+                      fontSize: '13px'
+                    }}
                   >
                     {section.number}
                   </span>
@@ -135,14 +149,24 @@ export default function TermsContent() {
               {/* Content */}
               <div className="flex-1">
                 <h2 
-                  className="text-2xl md:text-3xl font-bold mb-4 text-gray-900"
-                  style={{ color: '#1E3A8A', fontFamily: 'Poppins, sans-serif' }}
+                  className="mb-4"
+                  style={{ 
+                    color: '#111827', 
+                    fontFamily: 'Poppins, sans-serif',
+                    fontWeight: 600,
+                    fontSize: '22px'
+                  }}
                 >
-                  {section.number}. {section.title}
+                  {section.title}
                 </h2>
                 <div 
-                  className="text-gray-700 leading-relaxed"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  className="leading-relaxed"
+                  style={{ 
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: 400,
+                    fontSize: '14px',
+                    color: '#374151'
+                  }}
                 >
                   {section.content}
                 </div>

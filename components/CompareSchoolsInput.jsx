@@ -3,11 +3,13 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function CompareSchoolsInput() {
   const [school1, setSchool1] = useState('Greenwood Academy')
   const [school2, setSchool2] = useState('American School of Dubai')
   const [showComparison, setShowComparison] = useState(true)
+  const { isSubscribed } = useAuth()
 
   const schools = [
     {
@@ -166,7 +168,7 @@ export default function CompareSchoolsInput() {
                   </div>
                   
                   {/* Rating and Reviews - Left Start, Below Location */}
-                  <div className="mb-4">
+                  <div className={`mb-4 ${!isSubscribed ? 'blur-sm select-none' : ''}`}>
                     <span className="font-['Inter',sans-serif] font-medium text-sm text-[#1E3A8A]">
                       {school.rating}
                     </span>
@@ -191,7 +193,7 @@ export default function CompareSchoolsInput() {
                       <p className="font-['Inter',sans-serif] font-normal text-[10.47px] text-[#4B5563] mb-1">
                         Founded
                       </p>
-                      <p className="font-['Inter',sans-serif] font-semibold text-[11.96px] text-[#111827]">
+                      <p className={`font-['Inter',sans-serif] font-semibold text-[11.96px] text-[#111827] ${!isSubscribed ? 'blur-sm select-none' : ''}`}>
                         {school.founded}
                       </p>
                     </div>
@@ -210,7 +212,7 @@ export default function CompareSchoolsInput() {
                       <p className="font-['Inter',sans-serif] font-normal text-[10.47px] text-[#4B5563] mb-1">
                         Principal
                       </p>
-                      <p className="font-['Inter',sans-serif] font-semibold text-[11.96px] text-[#111827]">
+                      <p className={`font-['Inter',sans-serif] font-semibold text-[11.96px] text-[#111827] ${!isSubscribed ? 'blur-sm select-none' : ''}`}>
                         {school.principal}
                       </p>
                     </div>
@@ -229,7 +231,7 @@ export default function CompareSchoolsInput() {
                       <p className="font-['Inter',sans-serif] font-normal text-[10.47px] text-[#4B5563] mb-1">
                         Students
                       </p>
-                      <p className="font-['Inter',sans-serif] font-semibold text-[11.96px] text-[#111827]">
+                      <p className={`font-['Inter',sans-serif] font-semibold text-[11.96px] text-[#111827] ${!isSubscribed ? 'blur-sm select-none' : ''}`}>
                         {school.students}
                       </p>
                     </div>
