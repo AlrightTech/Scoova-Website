@@ -21,14 +21,14 @@ export default function PartnershipSection() {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/claim-school"
+              href="/register-school"
               className="px-8 py-3 rounded-lg text-white font-medium hover:opacity-90 transition-opacity text-center"
               style={{ backgroundColor: '#1E3A8A', fontFamily: 'Inter, sans-serif' }}
             >
               Claim Your School Page
             </Link>
             <Link
-              href="/learn-more"
+              href="/about"
               className="px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity text-center border-2"
               style={{ 
                 borderColor: '#1E3A8A', 

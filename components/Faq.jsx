@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function Faq({ showQuestions = true, showHeader = true }) {
   const [openIndex, setOpenIndex] = useState(0)
@@ -103,9 +104,12 @@ export default function Faq({ showQuestions = true, showHeader = true }) {
           <p className="text-[#4B5563] font-normal text-base leading-6 tracking-normal text-center align-middle mb-8" style={{ fontFamily: 'Inter, sans-serif' }}>
             Our support team is here to help you get the most out of our platform.
           </p>
-          <button className="text-white px-6 py-3 font-sans font-normal text-sm sm:text-base hover:opacity-90 transition-opacity rounded-[12px] w-full sm:w-auto bg-[#1E3A8A]">
+          <Link 
+            href="/contact"
+            className="inline-block text-white px-6 py-3 font-sans font-normal text-sm sm:text-base hover:opacity-90 transition-opacity rounded-[12px] w-full sm:w-auto bg-[#1E3A8A] text-center"
+          >
             Contact Support
-          </button>
+          </Link>
         </div>
       </div>
     </section>
