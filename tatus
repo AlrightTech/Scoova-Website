@@ -1,0 +1,22 @@
+* [33mc1d5b2b[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m Refactor PricingCard component to include Suspense for loading states; enhance redirection logic to handle return URLs. Extract inner content into PricingCardContent for better structure and readability.
+*   [33m2d67245[m Merge branch 'main' of https://github.com/AlrightTech/Scoova-Website
+[32m|[m[33m\[m  
+[32m|[m *   [33m431a571[m Merge pull request #5 from AlrightTech/amna
+[32m|[m [34m|[m[35m\[m  
+[32m|[m * [35m\[m   [33m12536b4[m Merge pull request #4 from AlrightTech/amna
+[32m|[m [36m|[m[1;31m\[m [35m\[m  
+[32m|[m * [1;31m\[m [35m\[m   [33m8bb7a62[m Merge pull request #3 from AlrightTech/amna
+[32m|[m [1;32m|[m[1;33m\[m [1;31m\[m [35m\[m  
+[32m|[m * [1;33m\[m [1;31m\[m [35m\[m   [33m0818ddd[m Merge pull request #2 from AlrightTech/amna
+[32m|[m [1;34m|[m[1;35m\[m [1;33m\[m [1;31m\[m [35m\[m  
+[32m|[m * [1;35m\[m [1;33m\[m [1;31m\[m [35m\[m   [33md27f895[m Merge pull request #1 from AlrightTech/amna
+[32m|[m [1;36m|[m[31m\[m [1;35m\[m [1;33m\[m [1;31m\[m [35m\[m  
+* [1;36m|[m [31m|[m [1;35m|[m [1;33m|[m [1;31m|[m [35m|[m [33m37a0c9b[m Integrate AuthProvider into RootLayout for authentication context; refactor SchoolDetailPage to replace multiple components with UnlockSubscriptionCard for streamlined content. Update SchoolsPage to use RecentlyReviewedSchoolsGate for subscription management. Enhance ApplicationFormModal and CompareSchoolsInput components with subscription checks for improved user experience. Refactor ContactForm for better styling and layout consistency. Update various components to utilize subscription status for conditional rendering, enhancing user engagement and accessibility.
+[35m|[m [1;36m|[m[35m_[m[31m|[m[35m_[m[1;35m|[m[35m_[m[1;33m|[m[35m_[m[1;31m|[m[35m/[m  
+[35m|[m[35m/[m[1;36m|[m [31m|[m [1;35m|[m [1;33m|[m [1;31m|[m   
+* [1;36m|[m [31m|[m [1;35m|[m [1;33m|[m [1;31m|[m [33mf541b1b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mamna[m[33m, [m[1;31morigin/amna[m[33m)[m Enhance CampusGallery component with scroll functionality and additional images; update styles for improved layout. Add scrollbar-hide class in globals.css for better user experience. Refactor ContactForm and RecentReviewsNearYou components to use links for email and phone, improving accessibility. Update Faq and ReviewsSection components to enhance user interaction with buttons and links.
+[1;31m|[m [1;36m|[m[1;31m_[m[31m|[m[1;31m_[m[1;35m|[m[1;31m_[m[1;33m|[m[1;31m/[m  
+[1;31m|[m[1;31m/[m[1;36m|[m [31m|[m [1;35m|[m [1;33m|[m   
+* [1;36m|[m [31m|[m [1;35m|[m [1;33m|[m [33m05c4235[m Refactor SchoolDetailPage and related components; added LatestFromSanFrancisco section for enhanced content. Updated styles in ArticleContent, ArticleHeader, ArticleSteps, and YouAlsoLiked components for improved readability and layout consistency. Enhanced pagination and navigation in YouAlsoLiked for better user experience.
+[1;33m|[m [1;36m|[m[1;33m_[m[31m|[m[1;33m_[m[1;35m|[m[1;33m/[m  
+[1;33m|[m[1;33m/[m[1;36m|[m [31m|[m [1;35m|[m   
