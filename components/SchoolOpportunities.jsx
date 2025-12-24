@@ -50,10 +50,10 @@ export default function SchoolOpportunities() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-gray-800">
+          <h2 className="text-3xl font-bold mb-2 text-gray-800 mb-4">
             School Job Opportunities
           </h2>
-          <p className="text-gray-600 text-base">
+          <p className="text-gray-600 text-lg">
             Discover open positions from verified schools worldwide.
           </p>
         </div>
@@ -63,19 +63,19 @@ export default function SchoolOpportunities() {
           {jobs.map((job) => (
             <div
               key={job.id}
-              className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white rounded-[16px] shadow-[0px_1px_2px_0px_#0000000D] p-6 hover:shadow-md transition-shadow"
             >
               {/* Top Section - Logo and Posted Date */}
               <div className="flex items-start justify-between mb-4">
                 {/* School Logo Placeholder */}
-                <div className="w-10 h-10 bg-gray-200 rounded flex items-center justify-center flex-shrink-0">
+                <div className="w-[90px] h-[90px] max-w-[90px] bg-gray-200 rounded flex items-center justify-center flex-shrink-0">
                   {job.logo ? (
                     <Image
                       src={job.logo}
                       alt={job.schoolName}
-                      width={40}
-                      height={40}
-                      className="object-contain"
+                      width={90}
+                      height={90}
+                      className="object-contain w-[90px] h-[90px] max-w-[90px]"
                     />
                   ) : (
                     <div className="w-full h-full bg-gray-300 rounded"></div>

@@ -25,52 +25,53 @@ export default function MoreFromLocation() {
 
   return (
     <section className="py-12 md:py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
         {/* Heading */}
         <h2 
-          className="text-center font-bold text-[#111827] mb-8 md:mb-12"
-          style={{ fontFamily: 'Poppins, sans-serif', fontSize: '28px' }}
+          className="text-center font-bold text-2xl text-[#111827] mb-8 md:mb-12"
+          style={{ fontFamily: 'Poppins, sans-serif' }}
         >
           More from San Francisco
         </h2>
         
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6">
           {articles.map((article) => (
             <div 
               key={article.id}
-              className="bg-white rounded-t-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+              className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[12px] overflow-hidden w-full md:max-w-[220px] flex-shrink-0"
             >
               {/* Image */}
-              <div className="relative w-full aspect-[4/3] overflow-hidden">
+              <div className="relative w-full h-[130px] overflow-hidden rounded-t-[15px]">
                 <Image
                   src={article.image}
                   alt={article.title}
                   fill
-                  className="object-cover"
+                  className="object-cover rounded-t-[15px]"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               
               {/* Text Block */}
-              <div className="p-6 bg-white">
+              <div className="p-6 bg-[#F8FAFC]">
                 <h3 
-                  className="font-bold text-[#111827] mb-3"
-                  style={{ fontFamily: 'Poppins, sans-serif', fontSize: '18px' }}
+                  className="font-semibold text-base text-[#1E293B] mb-3"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
                 >
                   {article.title}
                 </h3>
                 <Link
                   href={article.link}
-                  className="inline-flex items-center gap-2 text-[#1E3A8A] font-medium hover:underline"
-                  style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px' }}
+                  className="inline-flex items-center gap-2 text-[#1E3A8A] font-medium text-sm"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
                 >
                   Read More
                   <Image
                     src="/images/blue-arrow.svg"
                     alt="Arrow"
-                    width={17}
-                    height={14}
+                    width={10}
+                    height={12}
+                    className="w-[10px] h-[12px]"
                   />
                 </Link>
               </div>

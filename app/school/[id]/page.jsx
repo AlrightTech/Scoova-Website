@@ -4,12 +4,12 @@ import SchoolDetailHero from '@/components/SchoolDetailHero'
 import SchoolOverview from '@/components/SchoolOverview'
 import SchoolOpportunities from '@/components/SchoolOpportunities'
 import StudentInsights from '@/components/StudentInsights'
-import SchoolReviews from '@/components/SchoolReviews'
 import YouAlsoLiked from '@/components/YouAlsoLiked'
 import MoreFromLocation from '@/components/MoreFromLocation'
 import ArticleHeader from '@/components/ArticleHeader'
 import ArticleContent from '@/components/ArticleContent'
 import ArticleSteps from '@/components/ArticleSteps'
+import LatestFromSanFrancisco from '@/components/LatestFromSanFrancisco'
 import Link from 'next/link'
 
 export default async function SchoolDetailPage({ params }) {
@@ -24,9 +24,11 @@ export default async function SchoolDetailPage({ params }) {
       </div>
       <StudentInsights />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <SchoolReviews />
         <YouAlsoLiked />
       </div>
+      
+      {/* Latest from San Francisco Section */}
+      <LatestFromSanFrancisco />
       
       {/* Article Header Section */}
       <ArticleHeader />
