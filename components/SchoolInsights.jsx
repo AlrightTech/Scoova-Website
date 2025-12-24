@@ -1,14 +1,11 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
-import SubscribeModal from './SubscribeModal'
+import SchoolInsightsSubscriptionGate from './SchoolInsightsSubscriptionGate'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function SchoolInsights() {
-  // For demo: Set to false to show modal (non-subscriber view)
-  // In production, this would come from user authentication/subscription status
-  const [isSubscribed, setIsSubscribed] = useState(false)
-  const [showModal, setShowModal] = useState(!isSubscribed)
+  const { isSubscribed, isLoading } = useAuth()
   const school1Data = [
     { label: 'Academic Excellence', rating: 4.9, icon: '/images/acadmic-excellece.svg' },
     { label: 'Teaching Quality', rating: 4.8, icon: '/images/blue-user-icon.svg' },
@@ -73,19 +70,15 @@ export default function SchoolInsights() {
           School Insights & Analytics
         </h2>
         
-        {/* Content Container with relative positioning for modal */}
+        {/* Content Container with relative positioning */}
         <div className="relative min-h-[500px]">
-              {/* Modal - positioned relative to section only */}
-              <SubscribeModal 
-                isOpen={showModal && !isSubscribed} 
-                onClose={() => setShowModal(false)}
-                title="Subscribe to Unlock and See School Insights & Analytics"
-                buttonText="Subscribe School"
-                showFeatures={true}
-              />
+          {/* Subscription Gate - Show if not subscribed */}
+          {!isLoading && !isSubscribed && (
+            <SchoolInsightsSubscriptionGate />
+          )}
           
-          {/* Content Grid */}
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 ${showModal && !isSubscribed ? 'blur-sm pointer-events-none' : ''}`}>
+          {/* Content Grid - Blur if not subscribed */}
+          <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 ${!isSubscribed ? 'blur-sm pointer-events-none opacity-50' : ''}`}>
           {/* School 1 - Greenwood Academy */}
             <div className="bg-white rounded-[20px] shadow-md p-4 sm:p-6 md:p-8">
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 sm:mb-6 text-gray-900">

@@ -4,10 +4,14 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { useAuth } from '@/contexts/AuthContext'
+import UnsubscribeModal from './UnsubscribeModal'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [showUnsubscribeModal, setShowUnsubscribeModal] = useState(false)
   const pathname = usePathname()
+  const { isLoggedIn, isSubscribed, logout, user } = useAuth()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -93,23 +97,57 @@ export default function Navbar() {
               />
             </button>
 
-            {/* Sign In Text */}
-            <Link
-              href="/signin"
-              className="text-sm font-medium leading-5 tracking-normal align-middle transition-colors"
-              style={{ color: '#1E3A8A' }}
-            >
-              Sign In
-            </Link>
-
-            {/* Get Started Button */}
-            <Link
-              href="/get-started"
-              className="px-6 py-2 rounded-lg text-sm font-medium leading-5 tracking-normal align-middle text-white hover:opacity-90 transition-opacity"
-              style={{ backgroundColor: '#1E3A8A' }}
-            >
-              Get Started
-            </Link>
+            {/* Auth Actions */}
+            {!isLoggedIn ? (
+              <>
+                <Link
+                  href="/signin"
+                  className="text-sm font-medium leading-5 tracking-normal align-middle transition-colors"
+                  style={{ color: '#1E3A8A' }}
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/signup"
+                  className="px-6 py-2 rounded-lg text-sm font-medium leading-5 tracking-normal align-middle text-white hover:opacity-90 transition-opacity"
+                  style={{ backgroundColor: '#1E3A8A' }}
+                >
+                  Get Started
+                </Link>
+              </>
+            ) : (
+              <>
+                {isSubscribed ? (
+                  <>
+                    <span className="text-sm font-medium text-green-600">
+                      Subscribed
+                    </span>
+                    <button
+                      onClick={() => setShowUnsubscribeModal(true)}
+                      className="text-sm font-medium leading-5 tracking-normal align-middle transition-colors hover:underline"
+                      style={{ color: '#DC2626' }}
+                    >
+                      Unsubscribe
+                    </button>
+                  </>
+                ) : (
+                  <Link
+                    href="/pricing"
+                    className="text-sm font-medium leading-5 tracking-normal align-middle transition-colors"
+                    style={{ color: '#1E3A8A' }}
+                  >
+                    Subscribe
+                  </Link>
+                )}
+                <button
+                  onClick={logout}
+                  className="px-6 py-2 rounded-lg text-sm font-medium leading-5 tracking-normal align-middle text-white hover:opacity-90 transition-opacity"
+                  style={{ backgroundColor: '#DC2626' }}
+                >
+                  Logout
+                </button>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -198,27 +236,76 @@ export default function Navbar() {
                     />
                   </button>
                 </div>
-                <Link
-                  href="/signin"
-                  className="block px-3 py-2 text-sm font-medium leading-5 tracking-normal transition-colors rounded-md"
-                  style={{ color: '#1E3A8A' }}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/get-started"
-                  className="block px-3 py-2 text-center rounded-lg text-sm font-medium leading-5 tracking-normal text-white hover:opacity-90 transition-opacity"
-                  style={{ backgroundColor: '#1E3A8A' }}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Get Started
-                </Link>
+                {!isLoggedIn ? (
+                  <>
+                    <Link
+                      href="/signin"
+                      className="block px-3 py-2 text-sm font-medium leading-5 tracking-normal transition-colors rounded-md"
+                      style={{ color: '#1E3A8A' }}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Sign In
+                    </Link>
+                    <Link
+                      href="/signup"
+                      className="block px-3 py-2 text-center rounded-lg text-sm font-medium leading-5 tracking-normal text-white hover:opacity-90 transition-opacity"
+                      style={{ backgroundColor: '#1E3A8A' }}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Get Started
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    {isSubscribed ? (
+                      <>
+                        <span className="block px-3 py-2 text-sm font-medium text-green-600">
+                          Subscribed
+                        </span>
+                        <button
+                          onClick={() => {
+                            setShowUnsubscribeModal(true)
+                            setIsMenuOpen(false)
+                          }}
+                          className="block w-full text-left px-3 py-2 text-sm font-medium leading-5 tracking-normal transition-colors rounded-md hover:bg-gray-50"
+                          style={{ color: '#DC2626' }}
+                        >
+                          Unsubscribe
+                        </button>
+                      </>
+                    ) : (
+                      <Link
+                        href="/pricing"
+                        className="block px-3 py-2 text-sm font-medium leading-5 tracking-normal transition-colors rounded-md"
+                        style={{ color: '#1E3A8A' }}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Subscribe
+                      </Link>
+                    )}
+                    <button
+                      onClick={() => {
+                        logout()
+                        setIsMenuOpen(false)
+                      }}
+                      className="block w-full px-3 py-2 text-center rounded-lg text-sm font-medium leading-5 tracking-normal text-white hover:opacity-90 transition-opacity"
+                      style={{ backgroundColor: '#DC2626' }}
+                    >
+                      Logout
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </div>
         )}
       </div>
+
+      {/* Unsubscribe Modal */}
+      <UnsubscribeModal 
+        isOpen={showUnsubscribeModal} 
+        onClose={() => setShowUnsubscribeModal(false)} 
+      />
     </nav>
   )
 }

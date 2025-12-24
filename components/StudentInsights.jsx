@@ -2,16 +2,15 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import RatingSummary from './RatingSummary'
-import SubscribeModal from './SubscribeModal'
 import ReviewsSection from './ReviewsSection'
+import { useAuth } from '@/contexts/AuthContext'
+import SubscribeModal from './SubscribeModal'
 
 export default function StudentInsights() {
   const [activeTab, setActiveTab] = useState('reviews')
-  // For demo: Set to false to show modal (non-subscriber view)
-  // In production, this would come from user authentication/subscription status
-  const [isSubscribed, setIsSubscribed] = useState(false)
-  const [showModal, setShowModal] = useState(!isSubscribed)
+  const { isSubscribed } = useAuth()
 
   const ratingBreakdown = [
     { stars: 5, count: 198 },
@@ -168,25 +167,66 @@ export default function StudentInsights() {
               </p>
             </div>
             
-            {/* Content Container with relative positioning for modal */}
+            {/* Content Container */}
             <div className="relative min-h-[500px]">
-              {/* Modal - positioned relative to section only */}
-              <SubscribeModal 
-                isOpen={showModal && !isSubscribed} 
-                onClose={() => setShowModal(false)}
-                title="Unlock And See School Reviews"
-                buttonText="Subscribe to View Reviews"
-                showFeatures={false}
-              />
+              {/* Subscription Modal - Left Side */}
+              {!isSubscribed && (
+                <div className="lg:col-span-4 mb-8 lg:mb-0">
+                  <div className="bg-white rounded-2xl shadow-lg p-8 border-2" style={{ borderColor: '#BEDBFF' }}>
+                    {/* Blue Circular Icon */}
+                    <div className="flex justify-center mb-6">
+                      <div className="w-20 h-20 rounded-full flex items-center justify-center" style={{ backgroundColor: '#1E3A8A' }}>
+                        <svg 
+                          className="w-12 h-12 text-white" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            strokeWidth={2} 
+                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" 
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-center text-gray-900 mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                      Unlock Insights & Analytics
+                    </h3>
+                    
+                    {/* Subscribe Button */}
+                    <Link
+                      href="/pricing"
+                      className="block w-full text-center px-6 py-3 rounded-lg text-white font-semibold text-base hover:opacity-90 transition-opacity"
+                      style={{ 
+                        backgroundColor: '#1E3A8A',
+                        fontFamily: 'Poppins, sans-serif'
+                      }}
+                    >
+                      <span className="flex items-center justify-center gap-2">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        Subscribe To View Insights & Analytics
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              )}
               
-              <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 ${showModal && !isSubscribed ? 'blur-sm pointer-events-none' : ''}`}>
+              <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 ${!isSubscribed ? 'blur-sm pointer-events-none' : ''}`}>
             {/* Left Section - Rating Summary (4 columns) */}
-            <div className="lg:col-span-4">
-              <RatingSummary />
-            </div>
+            {isSubscribed && (
+              <div className="lg:col-span-4">
+                <RatingSummary />
+              </div>
+            )}
             
             {/* Right Section - Performance by Category (8 columns) */}
-            <div className="lg:col-span-8">
+            <div className={isSubscribed ? 'lg:col-span-8' : 'lg:col-span-12'}>
               
               <div className="bg-[#F9FAFB] rounded-[16px] p-[32px]">
                 <h3 className="text-xl font-bold mb-6 text-[#111827]">
@@ -235,16 +275,18 @@ export default function StudentInsights() {
         {/* School Information Tab Content */}
         {activeTab === 'information' && (
           <div className="relative min-h-[500px]">
-            {/* Modal - positioned relative to section only */}
-            <SubscribeModal 
-              isOpen={showModal && !isSubscribed} 
-              onClose={() => setShowModal(false)}
-              title="Unlock And See School Information"
-              buttonText="Subscribe to View Information"
-              showFeatures={false}
-            />
+            {/* Subscription Modal */}
+            {!isSubscribed && (
+              <SubscribeModal 
+                isOpen={!isSubscribed} 
+                onClose={() => {}}
+                title="Unlock And See School Information"
+                buttonText="Subscribe To View Information"
+                showFeatures={false}
+              />
+            )}
             
-            <div className={showModal && !isSubscribed ? 'blur-sm pointer-events-none' : ''}>
+            <div className={!isSubscribed ? 'blur-sm pointer-events-none' : ''}>
             {/* Campus Gallery Section */}
             <div className="mb-8">
               <h2 className="text-2xl font-bold mb-8" style={{ color: '#111827' }}>

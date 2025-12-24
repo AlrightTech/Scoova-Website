@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import NavigationLoader from '@/components/NavigationLoader'
+import { AuthProvider } from '@/contexts/AuthContext'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -30,10 +31,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
-        <Suspense fallback={null}>
-          <NavigationLoader />
-        </Suspense>
-        {children}
+        <AuthProvider>
+          <Suspense fallback={null}>
+            <NavigationLoader />
+          </Suspense>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   )

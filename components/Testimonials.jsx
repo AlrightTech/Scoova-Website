@@ -15,7 +15,7 @@ export default function Testimonials() {
       name: 'Sarah Johnson',
       role: 'Parent',
       location: 'New York, USA',
-      image: '/images/sarah-johnson.jpg',
+      image: '/images/say1.png',
     },
     {
       id: 1,
@@ -25,7 +25,7 @@ export default function Testimonials() {
       name: 'Michael Lee',
       role: 'Educator',
       location: 'Austin, USA',
-      image: '/images/michael-lee.jpg',
+      image: '/images/Singapore International School.png',
     },
     {
       id: 2,
@@ -35,17 +35,17 @@ export default function Testimonials() {
       name: 'Aisha Khan',
       role: 'Parent',
       location: 'Dubai, UAE',
-      image: '/images/aisha-khan.jpg',
+      image: '/images/Oxford University.png',
     },
     {
       id: 3,
       rating: 5,
       quote:
-        'The platform’s clarity and verified feedback saved me so much time while shortlisting universities.',
+        "The platform's clarity and verified feedback saved me so much time while shortlisting universities.",
       name: 'Daniel Carter',
       role: 'Student',
       location: 'Toronto, Canada',
-      image: '/images/daniel-carter.jpg',
+      image: '/images/Harvard University.png',
     },
   ]
 
@@ -135,9 +135,9 @@ export default function Testimonials() {
               <Image
                 src={active.image}
                 alt={active.name}
-                width={56}
-                height={56}
-                className="rounded-full object-cover flex-shrink-0"
+                width={50}
+                height={50}
+                className="w-[50px] h-[50px] rounded-full object-cover flex-shrink-0"
               />
               <div className="text-left">
                 <div className="font-[Poppins] mb-1 text-[16px] sm:text-[18px] font-semibold leading-6 text-[#111827]">

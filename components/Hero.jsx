@@ -1,7 +1,25 @@
+'use client'
+
 import SearchBox from './SearchBox'
 import Stats from './Stats'
+import { useAuth } from '@/contexts/AuthContext'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function Hero() {
+  const { isSubscribed, isLoggedIn, subscribe } = useAuth()
+  const router = useRouter()
+
+  const handleSubscribeClick = () => {
+    if (!isLoggedIn) {
+      // Redirect to login with return URL to pricing
+      router.push('/signin?returnUrl=/pricing')
+    } else {
+      // Redirect to pricing page
+      router.push('/pricing')
+    }
+  }
+
   return (
     <section 
       className="relative py-16 md:py-24 overflow-hidden min-h-[600px]"
@@ -41,9 +59,15 @@ export default function Hero() {
           <button className="text-white px-6 sm:px-8 py-3 sm:py-4 font-sans font-normal text-sm sm:text-base hover:opacity-90 transition-opacity rounded-[12px] w-full sm:w-auto" style={{ backgroundColor: '#1E3A8A' }}>
             Post a Review
           </button>
-          <button className="bg-transparent border-2 px-6 sm:px-8 py-3 sm:py-4 font-sans font-normal text-sm sm:text-base hover:opacity-90 transition-opacity rounded-[12px] w-full sm:w-auto" style={{ borderColor: '#1E3A8A', color: '#1E3A8A' }}>
-            Subscribe to Unlock Reviews
-          </button>
+          {!isSubscribed && (
+            <button 
+              onClick={handleSubscribeClick}
+              className="bg-transparent border-2 px-6 sm:px-8 py-3 sm:py-4 font-sans font-normal text-sm sm:text-base hover:opacity-90 transition-opacity rounded-[12px] w-full sm:w-auto" 
+              style={{ borderColor: '#1E3A8A', color: '#1E3A8A' }}
+            >
+              Subscribe to Unlock Reviews
+            </button>
+          )}
         </div>
 
         {/* Stats */}
@@ -51,7 +75,8 @@ export default function Hero() {
       </div>
 
       {/* Talk with Us Floating Button */}
-      <button 
+      <Link
+        href="/contact"
         className="fixed bottom-6 right-6 flex items-center gap-2 text-white px-4 sm:px-6 py-3 sm:py-4 font-sans font-medium text-sm hover:opacity-90 transition-opacity rounded-[12px] shadow-lg z-50"
         style={{ backgroundColor: '#1E3A8A' }}
       >
@@ -61,7 +86,7 @@ export default function Hero() {
           className="w-5 h-5 sm:w-6 sm:h-6"
         />
         <span>Talk with Us</span>
-      </button>
+      </Link>
     </section>
   )
 }

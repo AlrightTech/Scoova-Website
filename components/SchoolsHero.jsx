@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function SchoolsHero() {
   return (
@@ -36,11 +37,12 @@ export default function SchoolsHero() {
         
         {/* Action Button */}
         <div className="flex justify-center">
-          <button 
-            className="text-white hover:opacity-90 transition-opacity bg-[#1E3A8A] font-sans font-normal text-base pt-4 pr-9 pb-4 pl-9 rounded-[12px]"
+          <Link
+            href="/register-school"
+            className="inline-block text-white hover:opacity-90 transition-opacity bg-[#1E3A8A] font-sans font-normal text-base pt-4 pr-9 pb-4 pl-9 rounded-[12px]"
           >
             Register Your School
-          </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -3,7 +3,7 @@ import Footer from '@/components/Footer'
 import SchoolsHero from '@/components/SchoolsHero'
 import SchoolsSearchBar from '@/components/SchoolsSearchBar'
 import SchoolsGrid from '@/components/SchoolsGrid'
-import RecentlyReviewedSchools from '@/components/RecentlyReviewedSchools'
+import RecentlyReviewedSchoolsGate from '@/components/RecentlyReviewedSchoolsGate'
 
 export default function SchoolsPage() {
   return (
@@ -21,7 +21,7 @@ export default function SchoolsPage() {
       {/* Search Results Section - Separate Section */}
       <SchoolsGrid />
       
-      <RecentlyReviewedSchools />
+      <RecentlyReviewedSchoolsGate />
       <Footer />
     </main>
   )

@@ -2,8 +2,10 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function ReviewsSection() {
+  const { isSubscribed } = useAuth()
   const [expandedReviews, setExpandedReviews] = useState({})
   const [expandedReplies, setExpandedReplies] = useState({})
   const [openReplies, setOpenReplies] = useState({})
@@ -105,8 +107,8 @@ export default function ReviewsSection() {
                     {review.category}
                   </h3>
                 </div>
-                {/* Rating below header */}
-                <div className="">
+                {/* Rating below header - Blurred if not subscribed */}
+                <div className={!isSubscribed ? 'blur-sm select-none' : ''}>
                   <span 
                     className="font-bold text-[22px] text-[#1E3A8A]"
                     style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}
@@ -152,9 +154,9 @@ export default function ReviewsSection() {
 
                       {/* Rating and Time - Row form with gap */}
                       <div className="flex items-center gap-2.5">
-                        {/* Rating */}
+                        {/* Rating - Blurred if not subscribed */}
                         <span 
-                          className="font-bold text-[16px] text-[#1E3A8A]"
+                          className={`font-bold text-[16px] text-[#1E3A8A] ${!isSubscribed ? 'blur-sm select-none' : ''}`}
                           style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700 }}
                         >
                           {review.reviewerRating}
@@ -179,8 +181,8 @@ export default function ReviewsSection() {
                     {review.title}
                   </h4>
 
-                  {/* Review Content - Show truncated by default */}
-                  <div className="mb-3">
+                  {/* Review Content - Show truncated by default - Blurred if not subscribed */}
+                  <div className={`mb-3 ${!isSubscribed ? 'blur-sm select-none pointer-events-none' : ''}`}>
                     <p 
                       className="font-normal text-[14px] text-[#374151] leading-relaxed inline"
                       style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}
@@ -256,8 +258,8 @@ export default function ReviewsSection() {
                       </h5>
                     </div>
 
-                      {/* Reply Content */}
-                      <div>
+                      {/* Reply Content - Blurred if not subscribed */}
+                      <div className={!isSubscribed ? 'blur-sm select-none pointer-events-none' : ''}>
                         <p 
                           className="font-normal text-[14px] text-[#374151] leading-relaxed inline"
                           style={{ fontFamily: 'Inter, sans-serif', fontWeight: 400 }}

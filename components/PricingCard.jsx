@@ -1,6 +1,8 @@
 'use client'
 
 import Image from 'next/image'
+import { useAuth } from '@/contexts/AuthContext'
+import { useSearchParams } from 'next/navigation'
 
 export default function PricingCard({ 
   type = 'free', // 'free' or 'premium'
@@ -26,6 +28,9 @@ export default function PricingCard({
     'Follow Schools for Updates'
   ]
 
+  const { subscribe } = useAuth()
+  const searchParams = useSearchParams()
+  const returnUrl = searchParams?.get('returnUrl') || '/'
   const isFree = type === 'free'
   const isHome = variant === 'home'
   const isPricing = variant === 'pricing'
@@ -142,6 +147,21 @@ export default function PricingCard({
 
         {/* Button */}
         <button 
+          onClick={() => {
+            if (!isFree) {
+              // Subscribe using AuthContext
+              subscribe({
+                active: true,
+                plan: 'premium',
+                subscribedAt: new Date().toISOString()
+              })
+              
+              // Redirect to home page
+              if (typeof window !== 'undefined') {
+                window.location.href = '/'
+              }
+            }
+          }}
           className={`w-full px-6 py-3 rounded-lg font-${isHome ? 'semibold' : 'medium'} text-[16px] hover:opacity-90 transition-opacity mt-auto`}
           style={{ 
             backgroundColor: isFree ? 'white' : '#1E3A8A',
@@ -238,6 +258,22 @@ export default function PricingCard({
 
       {/* Button */}
       <button 
+        onClick={() => {
+          // Redirect to returnUrl or home page after selecting plan
+          if (typeof window !== 'undefined') {
+            if (!isFree) {
+              // Subscribe for premium
+              subscribe({
+                active: true,
+                plan: 'premium',
+                subscribedAt: new Date().toISOString()
+              })
+            }
+            // Redirect to returnUrl if available, otherwise home
+            const redirectUrl = returnUrl && returnUrl !== '/' ? decodeURIComponent(returnUrl) : '/'
+            window.location.href = redirectUrl
+          }
+        }}
         className={`w-full px-6 py-3 rounded-lg font-medium text-center ${isFree ? 'border-2' : ''}`}
         style={{ 
           borderColor: isFree ? '#1E3A8A' : 'transparent',

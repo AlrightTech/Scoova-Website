@@ -45,10 +45,16 @@ export default function JobDetail({ jobId }) {
 
       {/* Job Details Section */}
       <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* About the Role */}
-        <div className="bg-white rounded-lg shadow-md p-6 md:p-8 mb-6">
+        <div 
+          className="bg-white rounded-xl p-6 md:p-8 mb-6 border"
+          style={{
+            borderColor: '#EAEBEF',
+            boxShadow: '0px 1px 2px 0px #0000000D'
+          }}
+        >
           <h3 className="text-xl font-bold text-gray-900 mb-4">About the Role</h3>
           <p className="text-gray-700 leading-relaxed">
             {job.aboutRole}
@@ -56,7 +62,13 @@ export default function JobDetail({ jobId }) {
         </div>
 
         {/* Responsibilities */}
-        <div className="bg-white rounded-lg shadow-md p-6 md:p-8 mb-6">
+        <div 
+          className="bg-white rounded-lg p-6 md:p-8 mb-6 border"
+          style={{
+            borderColor: '#EAEBEF',
+            boxShadow: '0px 1px 2px 0px #0000000D'
+          }}
+        >
           <h3 className="text-xl font-bold text-gray-900 mb-4">Responsibilities</h3>
           <ul className="space-y-3">
             {job.responsibilities.map((responsibility, index) => (
