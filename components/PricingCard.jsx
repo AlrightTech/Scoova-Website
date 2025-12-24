@@ -1,12 +1,14 @@
 'use client'
 
+import { Suspense } from 'react'
 import Image from 'next/image'
 import { useAuth } from '@/contexts/AuthContext'
 import { useSearchParams } from 'next/navigation'
 
-export default function PricingCard({ 
-  type = 'free', // 'free' or 'premium'
-  variant = 'home', // 'home' or 'pricing'
+// Inner component that uses useSearchParams
+function PricingCardContent({ 
+  type = 'free',
+  variant = 'home',
   badgeText,
   buttonText,
   isCurrentPlan = false
@@ -156,9 +158,10 @@ export default function PricingCard({
                 subscribedAt: new Date().toISOString()
               })
               
-              // Redirect to home page
+              // Redirect to returnUrl if available, otherwise home
               if (typeof window !== 'undefined') {
-                window.location.href = '/'
+                const redirectUrl = returnUrl && returnUrl !== '/' ? decodeURIComponent(returnUrl) : '/'
+                window.location.href = redirectUrl
               }
             }
           }}
@@ -285,6 +288,27 @@ export default function PricingCard({
         {buttonText || (isFree ? 'Free Plan' : 'Your Current Plan')}
       </button>
     </div>
+  )
+}
+
+// Main component with Suspense boundary
+export default function PricingCard(props) {
+  return (
+    <Suspense fallback={
+      <div className={`rounded-[18px] p-8 relative border-2 flex flex-col ${props.variant === 'pricing' && props.type === 'free' ? 'bg-gradient-to-br from-[#EFF6FF] to-white' : props.variant === 'pricing' && props.type === 'premium' ? 'bg-white' : props.type === 'free' ? 'bg-white' : 'bg-gradient-to-br from-[#EFF6FF] to-white'}`}>
+        <div className="animate-pulse">
+          <div className="h-6 bg-gray-200 rounded w-1/2 mb-4"></div>
+          <div className="h-4 bg-gray-200 rounded w-3/4 mb-8"></div>
+          <div className="space-y-3">
+            <div className="h-4 bg-gray-200 rounded"></div>
+            <div className="h-4 bg-gray-200 rounded"></div>
+            <div className="h-4 bg-gray-200 rounded"></div>
+          </div>
+        </div>
+      </div>
+    }>
+      <PricingCardContent {...props} />
+    </Suspense>
   )
 }
 
