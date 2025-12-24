@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function ArticleSteps() {
   const steps = [
     {
@@ -19,45 +21,44 @@ export default function ArticleSteps() {
   ]
 
   return (
-    <section className="py-12 md:py-16 bg-white">
+    <section className="py-8 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Image above steps */}
+        <div className="relative w-full h-[320px] mb-8 overflow-hidden rounded-[12px] border border-[#E5E7EB]">
+          <Image
+            src="/images/Singapore International School.png"
+            alt="Process illustration"
+            fill
+            className="object-cover rounded-[12px]"
+            sizes="(max-width: 768px) 100vw, 896px"
+          />
+        </div>
+
         {/* Main Heading */}
         <h2 
-          className="text-[#111827] font-bold mb-6"
-          style={{ 
-            fontFamily: 'Poppins, sans-serif',
-            fontSize: '24px',
-            fontWeight: 700
-          }}
+          className="text-base font-normal text-[#1E293B]"
+          style={{ fontFamily: 'Inter, sans-serif' }}
         >
           Key Steps in the Process
         </h2>
 
         {/* Introductory Paragraph */}
         <p 
-          className="text-[#374151] leading-relaxed mb-8"
-          style={{ 
-            fontFamily: 'Inter, sans-serif',
-            fontSize: '16px',
-            fontWeight: 400
-          }}
+          className="text-base font-normal text-[#374151] leading-relaxed"
+          style={{ fontFamily: 'Inter, sans-serif' }}
         >
           Regardless of the path you choose, the journey generally involves a few key stages. Start early, stay organized, and don't be afraid to ask questions.
         </p>
 
         {/* Key Stages */}
-        <div className="space-y-6 mb-8">
+        <div className="space-y-4">
           {steps.map((step, index) => (
             <div key={index}>
               <p 
-                className="text-[#374151] leading-relaxed"
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: '16px',
-                  fontWeight: 400
-                }}
+                className="text-base font-normal text-[#374151] leading-relaxed"
+                style={{ fontFamily: 'Inter, sans-serif' }}
               >
-                <span className="font-bold text-[#111827]">{step.title}:</span> {step.description}
+                <span className="font-bold text-base text-[#1E293B]">{step.title}:</span> {step.description}
               </p>
             </div>
           ))}
@@ -65,12 +66,8 @@ export default function ArticleSteps() {
 
         {/* Concluding Paragraph */}
         <p 
-          className="text-[#374151] leading-relaxed mb-8"
-          style={{ 
-            fontFamily: 'Inter, sans-serif',
-            fontSize: '16px',
-            fontWeight: 400
-          }}
+          className="text-base font-normal text-[#374151] leading-relaxed"
+          style={{ fontFamily: 'Inter, sans-serif' }}
         >
           Ultimately, finding the right school is about finding a community where your child will thrive academically, socially, and emotionally. With thoughtful research and planning, San Francisco families can confidently navigate the school choice process and find the perfect educational home for their children.
         </p>

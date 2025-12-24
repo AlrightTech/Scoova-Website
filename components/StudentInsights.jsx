@@ -247,7 +247,7 @@ export default function StudentInsights() {
             <div className={showModal && !isSubscribed ? 'blur-sm pointer-events-none' : ''}>
             {/* Campus Gallery Section */}
             <div className="mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold mb-8" style={{ color: '#111827' }}>
+              <h2 className="text-2xl font-bold mb-8" style={{ color: '#111827' }}>
                 Campus Gallery
               </h2>
               
@@ -302,10 +302,10 @@ export default function StudentInsights() {
             {/* Leadership Team Section */}
             <div className="mt-16">
               <div className="text-center mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: '#1E3A8A' }}>
+                <h2 className="text-3xl font-bold mb-4" style={{ color: '#111827' }}>
                   Meet Our Leadership Team
                 </h2>
-                <p className="text-base text-gray-600 max-w-3xl mx-auto">
+                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                   Our experienced educators and administrators are dedicated to providing exceptional education and support for every student.
                 </p>
               </div>
