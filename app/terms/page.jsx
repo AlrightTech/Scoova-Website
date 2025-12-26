@@ -7,8 +7,10 @@ export default function TermsPage() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      <TermsHero />
+      <div className="pt-16">
+        <TermsHero />
       <TermsContent />
+      </div>
       <SimpleFooter />
     </main>
   )

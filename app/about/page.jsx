@@ -10,11 +10,13 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      <AboutHero />
+      <div className="pt-16">
+        <AboutHero />
       <OurJourney />
       <MissionVision />
       <WhatWeBelieve />
       <JoinMission />
+      </div>
       <Footer />
     </main>
   )

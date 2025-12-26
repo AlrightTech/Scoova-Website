@@ -6,7 +6,9 @@ export default function WriteReviewPage() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      <WriteReview />
+      <div className="pt-16">
+        <WriteReview />
+      </div>
       <Footer />
     </main>
   )

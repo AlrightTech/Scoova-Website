@@ -15,7 +15,8 @@ export default function CompareSchoolsPage() {
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
       <Navbar />
-      <CompareSchoolsHero />
+      <div className="pt-16">
+        <CompareSchoolsHero />
       
       {/* Search Filter Section - Separate Section */}
       <section className="bg-white py-4 border-b border-[#E5E7EB] shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)]">
@@ -65,7 +66,7 @@ export default function CompareSchoolsPage() {
         <CampusGallery />
         <TopSchools />
       </div>
-      
+      </div>
       <Footer />
     </main>
   )

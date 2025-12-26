@@ -7,7 +7,9 @@ export default async function JobDetailPage({ params }) {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      <JobDetail jobId={id} />
+      <div className="pt-16">
+        <JobDetail jobId={id} />
+      </div>
       <Footer />
     </main>
   )

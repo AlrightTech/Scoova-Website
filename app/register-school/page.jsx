@@ -7,8 +7,10 @@ export default function RegisterSchoolPage() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      <RegisterSchoolHero />
+      <div className="pt-16">
+        <RegisterSchoolHero />
       <RegisterSchoolForm />
+      </div>
       <Footer />
     </main>
   )

@@ -6,7 +6,7 @@ export default function PricingPlans() {
     <>
       {/* Hero Section with Background */}
       <section 
-        className="py-16 md:py-18 relative overflow-hidden"
+        className="pt-24 pb-16 md:pt-28 md:pb-18 relative overflow-hidden"
         style={{
           backgroundImage: 'url(/images/pricing-plan-img.png)',
           backgroundSize: 'cover',
