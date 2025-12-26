@@ -9,7 +9,8 @@ export default function SchoolsPage() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      <SchoolsHero />
+      <div className="pt-16">
+        <SchoolsHero />
       
       {/* Search Filter Section - Separate Section */}
       <section className="bg-white py-4 border-b border-[#E5E7EB] shadow-[0px_1px_2px_0px_#0000000D]">
@@ -22,6 +23,7 @@ export default function SchoolsPage() {
       <SchoolsGrid />
       
       <RecentlyReviewedSchoolsGate />
+      </div>
       <Footer />
     </main>
   )

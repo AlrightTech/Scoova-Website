@@ -1,10 +1,10 @@
 'use client'
 
+import Link from 'next/link'
 import SearchBox from './SearchBox'
 import Stats from './Stats'
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
 
 export default function Hero() {
   const { isSubscribed, isLoggedIn, subscribe } = useAuth()
@@ -20,9 +20,19 @@ export default function Hero() {
     }
   }
 
+  const handlePostReviewClick = () => {
+    if (!isLoggedIn) {
+      // Redirect to login with return URL to write-review
+      router.push('/signin?returnUrl=/write-review')
+    } else {
+      // Redirect to write review page
+      router.push('/write-review')
+    }
+  }
+
   return (
     <section 
-      className="relative py-16 md:py-24 overflow-hidden min-h-[600px]"
+      className="relative pt-24 pb-16 md:pt-28 md:pb-24 overflow-hidden min-h-[600px]"
       style={{
         backgroundImage: 'url(/images/hero-section.png)',
         backgroundSize: 'cover',
@@ -56,7 +66,11 @@ export default function Hero() {
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <button className="text-white px-6 sm:px-8 py-3 sm:py-4 font-sans font-normal text-sm sm:text-base hover:opacity-90 transition-opacity rounded-[12px] w-full sm:w-auto" style={{ backgroundColor: '#1E3A8A' }}>
+          <button 
+            onClick={handlePostReviewClick}
+            className="text-white px-6 sm:px-8 py-3 sm:py-4 font-sans font-normal text-sm sm:text-base hover:opacity-90 transition-opacity rounded-[12px] w-full sm:w-auto" 
+            style={{ backgroundColor: '#1E3A8A' }}
+          >
             Post a Review
           </button>
           {!isSubscribed && (
@@ -90,3 +104,4 @@ export default function Hero() {
     </section>
   )
 }
+

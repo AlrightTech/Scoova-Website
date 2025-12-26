@@ -8,9 +8,11 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      <ContactHero />
+      <div className="pt-16">
+        <ContactHero />
       <ContactForm />
       <PartnershipSection />
+      </div>
       <Footer />
     </main>
   )

@@ -10,6 +10,7 @@ import UnsubscribeModal from './UnsubscribeModal'
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [showUnsubscribeModal, setShowUnsubscribeModal] = useState(false)
+  const [isPricingDropdownOpen, setIsPricingDropdownOpen] = useState(false)
   const pathname = usePathname()
   const { isLoggedIn, isSubscribed, logout, user } = useAuth()
 
@@ -25,7 +26,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav className="bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -55,15 +56,55 @@ export default function Navbar() {
             >
               Schools
             </Link>
-            <Link 
-              href="/pricing" 
-              className={`text-sm leading-5 tracking-normal align-middle transition-colors ${
-                isActive('/pricing') ? 'font-bold' : 'font-medium text-gray-700'
-              }`}
-              style={isActive('/pricing') ? { color: '#1E3A8A' } : {}}
+            {/* Pricing Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsPricingDropdownOpen(true)}
+              onMouseLeave={() => setIsPricingDropdownOpen(false)}
             >
-              Pricing
-            </Link>
+              <button
+                className={`text-sm leading-5 tracking-normal align-middle transition-colors flex items-center gap-1 ${
+                  isActive('/pricing') || isActive('/premium-school-plan') ? 'font-bold' : 'font-medium text-gray-700'
+                }`}
+                style={isActive('/pricing') || isActive('/premium-school-plan') ? { color: '#1E3A8A' } : {}}
+              >
+                Pricing
+                <svg 
+                  className={`w-4 h-4 transition-transform ${isPricingDropdownOpen ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {isPricingDropdownOpen && (
+                <>
+                  {/* Invisible bridge to prevent gap closing */}
+                  <div className="absolute top-full left-0 w-full h-2" />
+                  <div 
+                    className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+                    onMouseEnter={() => setIsPricingDropdownOpen(true)}
+                    onMouseLeave={() => setIsPricingDropdownOpen(false)}
+                  >
+                    <Link
+                      href="/pricing"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                      onClick={() => setIsPricingDropdownOpen(false)}
+                    >
+                      Premium User
+                    </Link>
+                    <Link
+                      href="/premium-school-plan"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                      onClick={() => setIsPricingDropdownOpen(false)}
+                    >
+                      Premium School Plan
+                    </Link>
+                  </div>
+                </>
+              )}
+            </div>
             <Link 
               href="/about" 
               className={`text-sm leading-5 tracking-normal align-middle transition-colors ${
@@ -192,16 +233,29 @@ export default function Navbar() {
               >
                 Schools
               </Link>
-              <Link 
-                href="/pricing" 
-                className={`block px-3 py-2 text-sm leading-5 tracking-normal transition-colors rounded-md ${
-                  isActive('/pricing') ? 'font-bold' : 'font-medium text-gray-700 hover:bg-gray-50'
-                }`}
-                style={isActive('/pricing') ? { color: '#1E3A8A' } : {}}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Pricing
-              </Link>
+              <div className="px-3 py-2">
+                <div className="text-sm font-medium text-gray-700 mb-1">Pricing</div>
+                <Link 
+                  href="/pricing" 
+                  className={`block px-3 py-2 text-sm leading-5 tracking-normal transition-colors rounded-md ${
+                    isActive('/pricing') ? 'font-bold' : 'font-medium text-gray-700 hover:bg-gray-50'
+                  }`}
+                  style={isActive('/pricing') ? { color: '#1E3A8A' } : {}}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Premium User
+                </Link>
+                <Link 
+                  href="/premium-school-plan" 
+                  className={`block px-3 py-2 text-sm leading-5 tracking-normal transition-colors rounded-md ${
+                    isActive('/premium-school-plan') ? 'font-bold' : 'font-medium text-gray-700 hover:bg-gray-50'
+                  }`}
+                  style={isActive('/premium-school-plan') ? { color: '#1E3A8A' } : {}}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Premium School Plan
+                </Link>
+              </div>
               <Link 
                 href="/about" 
                 className={`block px-3 py-2 text-sm leading-5 tracking-normal transition-colors rounded-md ${

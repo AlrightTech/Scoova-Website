@@ -6,6 +6,8 @@ import SchoolRatings from '@/components/SchoolRatings'
 import AnalyticalReview from '@/components/AnalyticalReview'
 import VerifiedEmployeeReviews from '@/components/VerifiedEmployeeReviews'
 import SchoolRepliesToReviews from '@/components/SchoolRepliesToReviews'
+import FollowSchoolsForUpdates from '@/components/FollowSchoolsForUpdates'
+import WorldwideSchoolInformation from '@/components/WorldwideSchoolInformation'
 import WriteSchoolReviews from '@/components/WriteSchoolReviews'
 import WriteSeniorLeadershipReviews from '@/components/WriteSeniorLeadershipReviews'
 import LocalAreaGuides from '@/components/LocalAreaGuides'
@@ -16,13 +18,15 @@ export default function PricingPage() {
   return (
     <main className="min-h-screen bg-white relative overflow-x-hidden">
       <Navbar />
-      <div className="relative z-0">
+      <div className="relative z-0 pt-16">
         <PricingPlans />
         <ExperienceDifference />
         <SchoolRatings />
         <AnalyticalReview />
         <VerifiedEmployeeReviews />
         <SchoolRepliesToReviews />
+        <FollowSchoolsForUpdates />
+        <WorldwideSchoolInformation />
         <LocalAreaGuides />
         <WriteSchoolReviews />
         <WriteSeniorLeadershipReviews />

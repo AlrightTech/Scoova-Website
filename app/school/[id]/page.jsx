@@ -13,7 +13,8 @@ export default async function SchoolDetailPage({ params }) {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      <SchoolDetailHero />
+      <div className="pt-16">
+        <SchoolDetailHero />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <SchoolOverview />
         <SchoolOpportunities />
@@ -58,7 +59,7 @@ export default async function SchoolDetailPage({ params }) {
           </div>
         </div>
       </section>
-      
+      </div>
       <Footer />
     </main>
   )

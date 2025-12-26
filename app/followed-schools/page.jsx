@@ -7,8 +7,10 @@ export default function FollowedSchoolsPage() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      <FollowedSchoolsHero />
+      <div className="pt-16">
+        <FollowedSchoolsHero />
       <FollowedSchoolsGrid />
+      </div>
       <Footer />
     </main>
   )

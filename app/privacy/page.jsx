@@ -7,8 +7,10 @@ export default function PrivacyPage() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      <PrivacyHero />
+      <div className="pt-16">
+        <PrivacyHero />
       <PrivacyPolicyContent />
+      </div>
       <SimpleFooter />
     </main>
   )
