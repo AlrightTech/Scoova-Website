@@ -9,7 +9,7 @@ export default function WriteReview() {
   const [selectedRole, setSelectedRole] = useState('Parent')
   const [showRoleDropdown, setShowRoleDropdown] = useState(false)
   const [ratings, setRatings] = useState({
-    vision: 3,
+    vision: 4,
     leadership: 1,
     learning: 2,
     safety: 3,
@@ -39,7 +39,7 @@ export default function WriteReview() {
           <path d="M17.213 7.73518V7.84153L19.4592 5.59534C20.165 4.88958 20.165 3.74875 19.4592 3.04299L16.9423 0.529321C16.2365 -0.17644 15.0957 -0.17644 14.39 0.529321L13.0977 1.82161C13.0107 1.81194 12.9204 1.80549 12.8302 1.80549H9.22083C8.02522 1.80549 7.04231 2.70784 6.9134 3.86799H6.90051V7.73518C6.90051 8.44739 7.47737 9.02424 8.18958 9.02424C8.90178 9.02424 9.47864 8.44739 9.47864 7.73518V5.41487V5.41164V4.89924H9.99426H14.3771C14.3771 4.89924 14.3771 4.89924 14.3803 4.89924H14.6349C16.0593 4.89924 17.213 6.05295 17.213 7.47737V7.73518ZM10.5099 5.93049V7.73518C10.5099 9.0178 9.47219 10.0555 8.18958 10.0555C6.90696 10.0555 5.86926 9.0178 5.86926 7.73518V3.91311C4.71233 4.11292 3.74875 4.95403 3.42004 6.11096L2.88831 7.96721L0.529321 10.3262C-0.17644 11.032 -0.17644 12.1728 0.529321 12.8785L3.04622 15.3954C3.75198 16.1012 4.8928 16.1012 5.59856 15.3954L6.8135 14.1805C6.8425 14.1805 6.87151 14.1837 6.90051 14.1837H12.0568C12.9108 14.1837 13.6036 13.4908 13.6036 12.6368C13.6036 12.4564 13.5714 12.2823 13.5166 12.1212H13.6036C14.4576 12.1212 15.1505 11.4283 15.1505 10.5743C15.1505 10.1618 14.9894 9.78801 14.7251 9.51086C15.5533 9.34973 16.1785 8.62141 16.1818 7.74485V7.73196C16.1785 6.73938 15.3729 5.93372 14.3771 5.93372H10.5099V5.93049Z" fill="#16A34A"/>
         </svg>
       ),
-      ratingColor: '#EF4444'
+      ratingColor: '#EB4335'
     },
     {
       id: 'learning',
@@ -58,7 +58,7 @@ export default function WriteReview() {
           </defs>
         </svg>
       ),
-      ratingColor: '#9333EA'
+      ratingColor: '#B663FF'
     },
     {
       id: 'safety',
@@ -77,7 +77,7 @@ export default function WriteReview() {
           </defs>
         </svg>
       ),
-      ratingColor: '#F59E0B'
+      ratingColor: '#FBBC05'
     },
     {
       id: 'opportunities',
@@ -89,7 +89,7 @@ export default function WriteReview() {
           <path d="M4.00275 14.0039V13.0039H7.00375V14.0039H4.00275ZM11.0028 5.50393C11.0034 6.31518 10.8238 7.11644 10.4771 7.84986C10.1304 8.58328 9.62508 9.23055 8.99775 9.74493C8.39875 10.2389 8.00275 10.9379 8.00275 11.7149V12.0039H3.00275V11.7799C3.00275 11.0299 2.69975 10.2899 2.10875 9.82693C1.31065 9.20267 0.700772 8.36983 0.346565 7.42051C-0.00764111 6.47119 -0.0923693 5.4424 0.101752 4.44793C0.497752 2.31593 2.19375 0.57093 4.31675 0.12793C5.12071 -0.0484669 5.954 -0.0423723 6.75529 0.145766C7.55659 0.333903 8.30551 0.699297 8.94696 1.21506C9.58841 1.73083 10.1061 2.38385 10.4618 3.12607C10.8176 3.8683 11.0024 4.68084 11.0028 5.50393ZM2.50275 6.00393C2.50275 3.93693 3.68875 2.50393 5.50275 2.50393V1.50393C3.08975 1.50393 1.50275 3.42193 1.50275 6.00393H2.50275Z" fill="#1E3A8A" fillOpacity="0.9"/>
         </svg>
       ),
-      ratingColor: '#10B981'
+      ratingColor: '#34A853'
     }
   ]
 
@@ -102,9 +102,9 @@ export default function WriteReview() {
 
   const StarRating = ({ category, rating, onRatingChange }) => {
     return (
-      <div className="flex items-center gap-3">
-        <span className="text-sm text-gray-500">Poor</span>
-        <div className="flex gap-1">
+      <div className="flex flex-col">
+        {/* Stars Row */}
+        <div className="flex gap-1 mb-2">
           {[1, 2, 3, 4, 5].map((star) => (
             <button
               key={star}
@@ -129,7 +129,11 @@ export default function WriteReview() {
             </button>
           ))}
         </div>
-        <span className="text-sm text-gray-500">Excellent</span>
+        {/* Labels Row */}
+        <div className="flex justify-between items-center">
+          <span className="text-sm text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>Poor</span>
+          <span className="text-sm text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>Excellent</span>
+        </div>
       </div>
     )
   }
@@ -219,10 +223,20 @@ export default function WriteReview() {
           </div>
         </div>
 
+        {/* Role Heading and Instruction */}
+        <div className="mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3 text-gray-900" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            {selectedRole}
+          </h2>
+          <p className="text-gray-700 text-base md:text-lg" style={{ fontFamily: 'Inter, sans-serif' }}>
+            Please rate the following based on your experience with the school:
+          </p>
+        </div>
+
         {/* Rating Sections */}
         <div className="space-y-6 mb-12">
           {ratingCategories.map((category) => (
-            <div key={category.id} className="bg-white rounded-lg p-6 shadow-sm">
+            <div key={category.id} className="bg-gray-50 rounded-lg p-6 shadow-sm border border-gray-100">
               <div className="flex items-start gap-4">
                 {/* Icon */}
                 <div 
