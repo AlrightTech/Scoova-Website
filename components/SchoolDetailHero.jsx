@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function SchoolDetailHero() {
   return (
@@ -114,7 +115,10 @@ export default function SchoolDetailHero() {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3">
             {/* Follow School */}
-            <button className="flex items-center justify-center gap-2 font-sans font-medium text-[10.5px] text-[#374151] bg-[#F3F4F6] rounded-[8px] py-[7px] px-[17.95px] hover:opacity-90 transition-opacity">
+            <Link 
+              href="/followed-schools"
+              className="flex items-center justify-center gap-2 font-sans font-medium text-[10.5px] text-[#374151] bg-[#F3F4F6] rounded-[8px] py-[7px] px-[17.95px] hover:opacity-90 transition-opacity"
+            >
               <Image
                 src="/images/heart-icon.svg"
                 alt="Follow"
@@ -124,10 +128,13 @@ export default function SchoolDetailHero() {
                 style={{ filter: 'brightness(0) saturate(100%) invert(29%) sepia(7%) saturate(930%) hue-rotate(177deg) brightness(95%) contrast(88%)' }}
               />
               <span>Follow School</span>
-            </button>
+            </Link>
 
             {/* Write a Review */}
-            <button className="flex items-center justify-center gap-2 border border-[#FBBF24] rounded-lg py-2 px-4 text-[#FBBF24] font-['Inter',sans-serif] font-normal text-[10.5px] hover:opacity-90 transition-opacity">
+            <Link 
+              href="/write-review"
+              className="flex items-center justify-center gap-2 border border-[#FBBF24] rounded-lg py-2 px-4 text-[#FBBF24] font-['Inter',sans-serif] font-normal text-[10.5px] hover:opacity-90 transition-opacity"
+            >
               <Image
                 src="/images/write-icon (2).svg"
                 alt="Write"
@@ -136,7 +143,7 @@ export default function SchoolDetailHero() {
                 className="object-contain"
               />
               <span>Write a Review</span>
-            </button>
+            </Link>
 
             {/* Claimed */}
             <button className="flex items-center justify-center gap-2 text-[#999999] font-['Inter',sans-serif] font-normal text-[11px] bg-[#DDDDDD] rounded-lg py-2 px-4 hover:opacity-90 transition-opacity">
