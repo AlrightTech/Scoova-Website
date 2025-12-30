@@ -1,7 +1,18 @@
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function SchoolDetailHero() {
+export default function SchoolDetailHero({ isClaimed: initialIsClaimed = false }) {
+  // State to track if school is claimed (in real app, this would come from props/API)
+  const [isClaimed, setIsClaimed] = useState(initialIsClaimed)
+
+  const handleClaimClick = () => {
+    // In a real app, this would open a modal or navigate to claim page
+    // For now, we'll just toggle the state to show the claimed state
+    setIsClaimed(true)
+  }
   return (
     <section className="relative overflow-hidden ">
       {/* Background Image */}
@@ -145,10 +156,23 @@ export default function SchoolDetailHero() {
               <span>Write a Review</span>
             </Link>
 
-            {/* Claimed */}
-            <button className="flex items-center justify-center gap-2 text-[#999999] font-['Inter',sans-serif] font-normal text-[11px] bg-[#DDDDDD] rounded-lg py-2 px-4 hover:opacity-90 transition-opacity">
-              Claimed
-            </button>
+            {/* Claim / Claimed Button */}
+            {isClaimed ? (
+              <button 
+                disabled
+                className="flex items-center justify-center gap-2 text-[#999999] font-['Inter',sans-serif] font-normal text-[11px] bg-[#DDDDDD] rounded-lg py-2 px-4 cursor-not-allowed"
+              >
+                Claimed
+              </button>
+            ) : (
+              <Link
+                href="/register-school"
+                onClick={handleClaimClick}
+                className="flex items-center justify-center gap-2 text-white font-['Inter',sans-serif] font-normal text-[11px] bg-[#1E3A8A] rounded-lg py-2 px-4 hover:opacity-90 transition-opacity"
+              >
+                Claim
+              </Link>
+            )}
           </div>
         </div>
       </div>
