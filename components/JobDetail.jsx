@@ -143,8 +143,8 @@ export default function JobDetail({ jobId }) {
               <Image
                 src="/images/pdf-icon.png"
                 alt="PDF"
-                width={96}
-                height={96}
+                width={90}
+                height={90}
                 className="object-contain"
               />
             </div>
